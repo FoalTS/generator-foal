@@ -1,0 +1,11 @@
+{
+  "name": "<%= kebabName %>",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "compile": "tsc",
+    "dev-compile": "tsc -w",
+    "start": "node ./bin/www",
+    "dev-start": "nodemon ./bin/www"
+  }
+}

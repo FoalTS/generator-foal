@@ -1,0 +1,31 @@
+{
+  "name": "generator-foal",
+  "version": "0.0.0",
+  "description": "Yeoman generators to quickly start a project and create components (services, controllers, etc.)",
+  "files": [
+    "generators"
+  ],
+  "scripts": {
+    "test": "mocha ./**/*.spec.js",
+    "dev-test": "mocha -w ./**/*.spec.js"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "backend",
+    "typescript",
+    "generator"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "yeoman-generator": "^1.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FoalTS/generator-foal.git"
+  },
+  "devDependencies": {
+    "mocha": "^3.5.3",
+    "yeoman-test": "^1.7.0"
+  }
+}
