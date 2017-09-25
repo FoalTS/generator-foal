@@ -5,7 +5,7 @@ import { ControllerBinder, NotImplementedError } from '@foal/core';
 import { <%= CamelName %>Controller } from './<%= kebabName %>.interface';
 
 class <%= CamelName %>Binder extends ControllerBinder<<%= CamelName %>Controller> {
-  protected setup(path: string, controller: <%= CamelName %>Controller, getExpressMiddlewares): Router {
+  protected expressRouter(path: string, controller: <%= CamelName %>Controller, getExpressMiddlewares): Router {
     const router = Router();
 
     // Enter your code here.

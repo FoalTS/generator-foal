@@ -39,8 +39,14 @@ module.exports = class extends Generator {
       this.templatePath(`${this.options.type}-service.ts`),
       this.destinationPath(`${this.names.kebabName}.service.ts`),
       Object.assign({
-        underscoreName: `${kebabName.replace(/-/g,'_')}`
+        underscoreName: `${this.names.kebabName.replace(/-/g,'_')}`
       }, this.names)
     );
+  }
+
+  install() {
+    if (this.options.type && ['sequelize', 'sequelize-connection'].includes(this.options.type)) {
+      this.npmInstall([ '@foal/sequelize' ], { 'save': true });
+    }
   }
 };

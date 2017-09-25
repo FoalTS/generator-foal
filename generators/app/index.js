@@ -32,7 +32,7 @@ module.exports = class extends Generator {
     for (let path of paths) {
       this.fs.copyTpl(
         this.templatePath(path),
-        this.destinationPath(`${this.kebabName}/${path}`),
+        this.destinationPath(`${this.names.kebabName}/${path}`),
         this.names
       );
     }
@@ -41,8 +41,9 @@ module.exports = class extends Generator {
   install() {
     this.npmInstall([
       'express',
-      '@foal/core'
-    ], { 'save': true }, () => {}, { cwd: this.kebabName });
+      '@foal/core',
+      '@types/express'
+    ], { 'save': true }, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'nodemon',
       'mocha',
@@ -51,6 +52,6 @@ module.exports = class extends Generator {
       '@types/chai',
       'typescript',
       'tslint'
-    ], { 'save-dev': true }, () => {}, { cwd: this.kebabName });
+    ], { 'save-dev': true }, () => {}, { cwd: this.names.kebabName });
   }
 };
