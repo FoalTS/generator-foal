@@ -29,7 +29,7 @@ module.exports = class extends Generator {
     }
     this.fs.copyTpl(
       this.templatePath(`${this.options.type}-controller.ts`),
-      this.destinationPath(`${this.names.kebabName}.controller.ts`),
+      this.destinationPath(`${this.names.kebabName}-controller.service.ts`),
       this.names
     );
   }
