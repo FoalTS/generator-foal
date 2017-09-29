@@ -1,6 +1,6 @@
-import { Injectable, RestController, RestParams } from '@foal/core';
+import { Service, RestController, RestParams } from '@foal/core';
 
-@Injectable()
+@Service()
 export class <%= CamelName %>Controller implements RestController {
   constructor() {}
 

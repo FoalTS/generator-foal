@@ -1,7 +1,7 @@
-import { Injectable } from '@foal/core';
+import { Service } from '@foal/core';
 import { SequelizeConnectionService } from '@foal/sequelize';
 
-@Injectable()
+@Service()
 class <%= CamelName %> extends SequelizeConnectionService {
   constructor() {
     super('my_uri');

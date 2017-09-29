@@ -1,6 +1,6 @@
-import { ModuleData } from '@foal/core';
+import { FoalModule } from '@foal/core';
 
-export const AppModule: ModuleData = {
+export const AppModule: FoalModule = {
   controllerBindings: [],
   imports: [],
   services: [],

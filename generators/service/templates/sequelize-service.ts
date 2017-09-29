@@ -1,9 +1,9 @@
-import { Injectable } from '@foal/core';
+import { Service } from '@foal/core';
 import { SequelizeService } from '@foal/sequelize';
 
 import { MySequelizeConnection } from 'somewhere';
 
-@Injectable()
+@Service()
 export class <%= CamelName %> extends SequelizeService {
   constructor(protected connection: MySequelizeConnection) {
     super('<%= underscoreName %>s', {

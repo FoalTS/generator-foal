@@ -1,6 +1,6 @@
-import { Injectable } from '@foal/core';
+import { Service } from '@foal/core';
 
-@Injectable()
+@Service()
 export class <%= CamelName %> {
   constructor() {}
 
