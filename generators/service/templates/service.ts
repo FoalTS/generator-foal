@@ -1,7 +1,7 @@
 import { Service } from '@foal/core';
 
 @Service()
-export class <%= CamelName %> {
+export class <%= CamelName %>Service {
   constructor() {}
 
 }

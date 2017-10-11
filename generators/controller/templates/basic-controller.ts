@@ -1,6 +1,5 @@
-import { Request, Response } from 'express';
-
 import { BasicController, Service } from '@foal/core';
+import { Request, Response } from 'express';
 
 @Service()
 export class <%= CamelName %>Controller implements BasicController {
