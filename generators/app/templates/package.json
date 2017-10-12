@@ -5,7 +5,10 @@
   "scripts": {
     "compile": "tsc",
     "dev-compile": "tsc -w",
+    "lint": "tslint -p tslint.json",
     "start": "node ./bin/www",
-    "dev-start": "nodemon ./bin/www"
+    "dev-start": "<% if(isWindows){ %>set DEBUG=app:* &&<% } else { %>DEBUG=app:*<% } %> nodemon ./bin/www",
+    "test": "mocha ./dist/**/*.spec.js",
+    "dev-test": "mocha -w ./dist/**/*.spec.js"
   }
 }

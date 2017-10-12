@@ -1,6 +1,5 @@
-import { Router } from 'express';
-
 import { ControllerBinder, NotImplementedError } from '@foal/core';
+import { Router } from 'express';
 
 import { <%= CamelName %>Controller } from './<%= kebabName %>.interface';
 

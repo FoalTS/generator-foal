@@ -4,7 +4,7 @@ import { SequelizeService } from '@foal/sequelize';
 import { MySequelizeConnection } from 'somewhere';
 
 @Service()
-export class <%= CamelName %> extends SequelizeService {
+export class <%= CamelName %>Service extends SequelizeService {
   constructor(protected connection: MySequelizeConnection) {
     super('<%= underscoreName %>s', {
       // Schema

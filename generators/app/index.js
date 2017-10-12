@@ -15,6 +15,7 @@ module.exports = class extends Generator {
 
   initializing() {
     this.names = getNames(this.options.name);
+    this.isWindows = /^win/.test(process.platform);
   }
 
   writing() {
@@ -23,7 +24,6 @@ module.exports = class extends Generator {
       'src/app/app.module.ts',
       'src/index.ts',
 
-      '.gitignore',
       'app.js',
       'package.json',
       'tsconfig.json',
@@ -33,9 +33,14 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(path),
         this.destinationPath(`${this.names.kebabName}/${path}`),
-        this.names
+        Object.assign({ isWindows: this.isWindows }, this.names)
       );
     }
+    this.fs.copyTpl(
+      this.templatePath('gitignore'),
+      this.destinationPath(`${this.names.kebabName}/.gitignore`),
+      this.names
+    );
   }
 
   install() {
