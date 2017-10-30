@@ -6,8 +6,8 @@
     "compile": "tsc",
     "dev-compile": "tsc -w",
     "lint": "tslint -p tslint.json",
-    "start": "node ./bin/www",
-    "dev-start": "<% if(isWindows){ %>set DEBUG=app:* &&<% } else { %>DEBUG=app:*<% } %> nodemon ./bin/www",
+    "start": "node app.js",
+    "dev-start": "nodemon app.js",
     "test": "mocha ./dist/**/*.spec.js",
     "dev-test": "mocha -w ./dist/**/*.spec.js"
   }

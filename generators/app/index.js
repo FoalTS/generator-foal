@@ -15,12 +15,14 @@ module.exports = class extends Generator {
 
   initializing() {
     this.names = getNames(this.options.name);
-    this.isWindows = /^win/.test(process.platform);
+    
   }
 
   writing() {
     const paths = [
-      'bin/www',
+      '.vscode/launch.json',
+      '.vscode/tasks.json',
+      'config/config.ts',
       'src/app/app.module.ts',
       'src/index.ts',
 
@@ -33,7 +35,7 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(path),
         this.destinationPath(`${this.names.kebabName}/${path}`),
-        Object.assign({ isWindows: this.isWindows }, this.names)
+        this.names
       );
     }
     this.fs.copyTpl(
