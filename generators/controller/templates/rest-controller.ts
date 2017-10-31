@@ -1,4 +1,4 @@
-import { Service, RestController, RestParams } from '@foal/core';
+import { RestController, RestParams, Service } from '@foal/core';
 
 @Service()
 export class <%= CamelName %>Controller implements RestController {
