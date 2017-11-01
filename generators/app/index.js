@@ -15,22 +15,34 @@ module.exports = class extends Generator {
 
   initializing() {
     this.names = getNames(this.options.name);
-    
+  }
+
+  prompting() {
+    return this.prompt([
+      {
+        type: 'confirm',
+        name: 'vscode',
+        message: 'Add default VSCode config files for debugging?',
+        default: true
+      }
+    ]).then(({ vscode }) => this.vscode = vscode);
   }
 
   writing() {
     const paths = [
-      '.vscode/launch.json',
-      '.vscode/tasks.json',
-      'config/config.ts',
       'src/app/app.module.ts',
-      'src/index.ts',
+      'src/config/config.ts',
+      'src/config/index.ts',
+      'src/main.ts',
 
-      'app.js',
       'package.json',
       'tsconfig.json',
       'tslint.json',
     ];
+    if (this.vscode) {
+      paths.push('.vscode/launch.json');
+      paths.push('.vscode/tasks.json');
+    }
     for (let path of paths) {
       this.fs.copyTpl(
         this.templatePath(path),

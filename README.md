@@ -1,4 +1,8 @@
-# foal-generators
+# Foal generator
+
+[![npm version](https://badge.fury.io/js/generator-foal.svg)](https://badge.fury.io/js/generator-foal)
+[![Build Status](https://travis-ci.org/FoalTS/generator-foal.svg?branch=add-travis)](https://travis-ci.org/FoalTS/generator-foal)
+
 Yeoman generators to quickly start a project and create components (services, controllers, etc.)
 
 **This work is in progress**
