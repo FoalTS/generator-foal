@@ -11,32 +11,27 @@ module.exports = class extends Generator {
       required: true,
       desc: 'name of the service'
     });
-    this.argument('type', {
-      type: String,
-      required: false,
-      desc: 'sequelize|sequelize-connection'
-    });    
   }
 
   initializing() {
     this.names = getNames(this.options.name);
   }
+  
+  prompting() {
+    return this.prompt([
+      {
+        type: 'list',
+        name: 'type',
+        message: 'Type',
+        choices: [ 'None', 'Sequelize', 'Sequelize-connection' ],
+        default: 0
+      }
+    ]).then(({ type }) => this.type = type.toLowerCase());
+  }
 
   writing() {
-    if (!this.options.type) {
-      this.fs.copyTpl(
-        this.templatePath('service.ts'),
-        this.destinationPath(`${this.names.kebabName}.service.ts`),
-        this.names
-      );
-      return;
-    }
-    if (!['sequelize', 'sequelize-connection'].includes(this.options.type)) {
-      this.log('Please enter a valid type: sequelize|sequelize-connection');
-      return;
-    }
     this.fs.copyTpl(
-      this.templatePath(`${this.options.type}-service.ts`),
+      this.templatePath(`${this.type}-service.ts`),
       this.destinationPath(`${this.names.kebabName}.service.ts`),
       Object.assign({
         underscoreName: `${this.names.kebabName.replace(/-/g,'_')}`
@@ -45,8 +40,8 @@ module.exports = class extends Generator {
   }
 
   install() {
-    if (this.options.type && ['sequelize', 'sequelize-connection'].includes(this.options.type)) {
-      this.npmInstall([ '@foal/sequelize' ], { 'save': true });
+    if (['sequelize', 'sequelize-connection'].includes(this.type)) {
+      this.npmInstall([ '@foal/sequelize@0.3.0' ], { 'save': true });
     }
   }
 };
