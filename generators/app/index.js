@@ -15,25 +15,40 @@ module.exports = class extends Generator {
 
   initializing() {
     this.names = getNames(this.options.name);
-    this.isWindows = /^win/.test(process.platform);
+  }
+
+  prompting() {
+    return this.prompt([
+      {
+        type: 'confirm',
+        name: 'vscode',
+        message: 'Add default VSCode config files for debugging?',
+        default: true
+      }
+    ]).then(({ vscode }) => this.vscode = vscode);
   }
 
   writing() {
     const paths = [
-      'bin/www',
       'src/app/app.module.ts',
-      'src/index.ts',
+      'src/config/config.ts',
+      'src/config/index.ts',
+      'src/main.spec.ts',
+      'src/main.ts',
 
-      'app.js',
       'package.json',
       'tsconfig.json',
       'tslint.json',
     ];
+    if (this.vscode) {
+      paths.push('.vscode/launch.json');
+      paths.push('.vscode/tasks.json');
+    }
     for (let path of paths) {
       this.fs.copyTpl(
         this.templatePath(path),
         this.destinationPath(`${this.names.kebabName}/${path}`),
-        Object.assign({ isWindows: this.isWindows }, this.names)
+        this.names
       );
     }
     this.fs.copyTpl(
@@ -45,9 +60,11 @@ module.exports = class extends Generator {
 
   install() {
     this.npmInstall([
+      'body-parser',
       'express',
-      '@foal/core',
-      '@types/express'
+      '@types/node',
+      '@foal/core@0.3.0',
+      '@foal/express@0.3.0'
     ], { 'save': true }, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'nodemon',

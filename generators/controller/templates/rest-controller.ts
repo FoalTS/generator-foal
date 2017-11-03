@@ -1,4 +1,4 @@
-import { Service, RestController, RestParams } from '@foal/core';
+import { RestController, RestParams, Service } from '@foal/core';
 
 @Service()
 export class <%= CamelName %>Controller implements RestController {
@@ -8,6 +8,9 @@ export class <%= CamelName %>Controller implements RestController {
   }
 
   public async get(id: any, params: RestParams): Promise<any> {
+  }
+
+  public async getAll(params: any): Promise<any> {
   }
 
   public async update(id: any, data: any, params: RestParams): Promise<any> {

@@ -11,24 +11,27 @@ module.exports = class extends Generator {
       required: true,
       desc: 'name of the controller'
     });
-    this.argument('type', {
-      type: String,
-      required: true,
-      desc: 'basic|rest'
-    });    
   }
 
   initializing() {
     this.names = getNames(this.options.name);
   }
+  
+  prompting() {
+    return this.prompt([
+      {
+        type: 'list',
+        name: 'type',
+        message: 'Type',
+        choices: [ 'REST' ],
+        default: 0
+      }
+    ]).then(({ type }) => this.type = type.toLowerCase());
+  }
 
   writing() {
-    if (!['basic', 'rest'].includes(this.options.type)) {
-      this.log('Please enter a valid type: basic|rest');
-      return;
-    }
     this.fs.copyTpl(
-      this.templatePath(`${this.options.type}-controller.ts`),
+      this.templatePath(`${this.type}-controller.ts`),
       this.destinationPath(`${this.names.kebabName}-controller.service.ts`),
       this.names
     );
