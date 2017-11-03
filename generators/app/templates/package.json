@@ -8,7 +8,7 @@
     "lint": "tslint -p tslint.json",
     "start": "node ./dist/main.js",
     "dev-start": "nodemon ./dist/main.js",
-    "test": "mocha ./dist/**/*.spec.js",
-    "dev-test": "mocha -w ./dist/**/*.spec.js"
+    "test": "mocha \"./dist/**/*.spec.js\"",
+    "dev-test": "mocha -w \"./dist/**/*.spec.js\""
   }
 }
