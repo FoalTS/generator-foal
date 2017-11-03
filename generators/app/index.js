@@ -33,6 +33,7 @@ module.exports = class extends Generator {
       'src/app/app.module.ts',
       'src/config/config.ts',
       'src/config/index.ts',
+      'src/main.spec.ts',
       'src/main.ts',
 
       'package.json',
@@ -59,9 +60,11 @@ module.exports = class extends Generator {
 
   install() {
     this.npmInstall([
+      'body-parser',
       'express',
-      '@foal/core',
-      '@types/express'
+      '@types/node',
+      '@foal/core@0.3.0',
+      '@foal/express@0.3.0'
     ], { 'save': true }, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'nodemon',

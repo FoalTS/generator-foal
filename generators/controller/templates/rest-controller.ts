@@ -10,6 +10,9 @@ export class <%= CamelName %>Controller implements RestController {
   public async get(id: any, params: RestParams): Promise<any> {
   }
 
+  public async getAll(params: any): Promise<any> {
+  }
+
   public async update(id: any, data: any, params: RestParams): Promise<any> {
   }
 
