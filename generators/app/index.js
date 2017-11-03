@@ -62,6 +62,7 @@ module.exports = class extends Generator {
     this.npmInstall([
       'body-parser',
       'express',
+      '@types/node',
       '@foal/core@0.3.0',
       '@foal/express@0.3.0'
     ], { 'save': true }, () => {}, { cwd: this.names.kebabName });
@@ -71,7 +72,6 @@ module.exports = class extends Generator {
       'chai',
       '@types/mocha',
       '@types/chai',
-      '@types/node',
       'typescript',
       'tslint'
     ], { 'save-dev': true }, () => {}, { cwd: this.names.kebabName });
