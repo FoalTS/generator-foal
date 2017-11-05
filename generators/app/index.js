@@ -59,13 +59,7 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.npmInstall([
-      'body-parser',
-      'express',
-      '@types/node',
-      '@foal/core@0.3.0',
-      '@foal/express@0.3.0'
-    ], { 'save': true }, () => {}, { cwd: this.names.kebabName });
+    this.npmInstall([], {}, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'nodemon',
       'mocha',
