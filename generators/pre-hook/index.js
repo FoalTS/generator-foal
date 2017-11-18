@@ -23,5 +23,10 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.names.kebabName}.pre-hook.ts`),
       this.names
     );
+    this.fs.copyTpl(
+      this.templatePath('pre-hook.spec.ts'),
+      this.destinationPath(`${this.names.kebabName}.pre-hook.spec.ts`),
+      this.names
+    );
   }
 };
