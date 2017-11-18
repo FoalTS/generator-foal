@@ -35,5 +35,10 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.names.kebabName}-controller.service.ts`),
       this.names
     );
+    this.fs.copyTpl(
+      this.templatePath(`${this.type}-controller.spec.ts`),
+      this.destinationPath(`${this.names.kebabName}-controller.service.spec.ts`),
+      this.names
+    );
   }
 };

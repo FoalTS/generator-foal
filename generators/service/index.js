@@ -37,6 +37,11 @@ module.exports = class extends Generator {
         underscoreName: `${this.names.kebabName.replace(/-/g,'_')}`
       }, this.names)
     );
+    this.fs.copyTpl(
+      this.templatePath(`${this.type}-service.spec.ts`),
+      this.destinationPath(`${this.names.kebabName}.service.spec.ts`),
+      this.names
+    );
   }
 
   install() {
