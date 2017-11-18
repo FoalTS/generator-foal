@@ -1,6 +1,6 @@
 {
   "name": "generator-foal",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Yeoman generators to quickly start a project and create components (services, controllers, etc.)",
   "files": [
     "generators"
