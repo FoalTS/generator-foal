@@ -10,5 +10,13 @@
     "dev-start": "nodemon ./dist/main.js",
     "test": "mocha \"./dist/**/*.spec.js\"",
     "dev-test": "mocha -w \"./dist/**/*.spec.js\""
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "helmet": "^3.9.0",
+    "@types/node": "^8.0.47",
+    "@foal/core": "^0.3.0",
+    "@foal/express": "^0.3.0"
   }
 }
