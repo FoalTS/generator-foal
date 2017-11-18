@@ -1,3 +1,5 @@
+import { PreMiddleware } from '@foal/core';
+
 import { make<%= CamelName %>Middleware } from './<%= kebabName %>.pre-hook';
 
 describe('make<%= CamelName %>Middleware', () => {

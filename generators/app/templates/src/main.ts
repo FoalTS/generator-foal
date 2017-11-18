@@ -1,8 +1,8 @@
 import { Foal } from '@foal/core';
 import { getCallback } from '@foal/express';
 import * as bodyParser from 'body-parser';
-import * as helmet from 'helmet';
 import * as express from 'express';
+import * as helmet from 'helmet';
 
 import { AppModule } from './app/app.module';
 import { config } from './config';
