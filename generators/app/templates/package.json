@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "compile": "tsc",
-    "dev-compile": "tsc -w",
     "lint": "tslint -p tslint.json",
-    "start": "node ./dist/main.js",
-    "dev-start": "nodemon ./dist/main.js",
+    "build": "tsc",
     "test": "mocha \"./dist/**/*.spec.js\"",
-    "dev-test": "mocha -w \"./dist/**/*.spec.js\""
+    "start": "node ./dist/main.js",
+    "dev:app": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"nodemon -e js ./dist/main.js\"",
+    "dev:test": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"mocha -w \"./dist/**/*.spec.js\"\""
   },
   "dependencies": {
     "body-parser": "^1.18.2",
