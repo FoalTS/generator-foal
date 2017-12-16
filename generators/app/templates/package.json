@@ -5,10 +5,10 @@
   "scripts": {
     "lint": "tslint -p tslint.json",
     "build": "tsc",
-    "test": "mocha \"./dist/**/*.spec.js\"",
-    "start": "node ./dist/main.js",
-    "dev:app": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"nodemon -e js ./dist/main.js\"",
-    "dev:test": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"mocha -w \"./dist/**/*.spec.js\"\""
+    "test": "mocha -r source-map-support/register \"./dist/**/*.spec.js\"",
+    "start": "node -r source-map-support/register ./dist/main.js",
+    "dev:app": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"nodemon -r source-map-support/register -e js ./dist/main.js\"",
+    "dev:test": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"mocha -r source-map-support/register -w \"./dist/**/*.spec.js\"\""
   },
   "dependencies": {
     "body-parser": "^1.18.2",

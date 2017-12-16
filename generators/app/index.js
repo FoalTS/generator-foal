@@ -62,6 +62,7 @@ module.exports = class extends Generator {
     this.npmInstall([], {}, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'concurrently',
+      'source-map-support',
       'nodemon',
       'mocha',
       'chai',
