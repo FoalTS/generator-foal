@@ -18,14 +18,32 @@ module.exports = class extends Generator {
   }
 
   prompting() {
+    const pg = 'pg@6';
     return this.prompt([
       {
         type: 'confirm',
         name: 'vscode',
         message: 'Add default VSCode config files for debugging?',
         default: true
+      },
+      {
+        type: 'checkbox',
+        name: 'databases',
+        message: 'Which databases will you be using?',
+        choices: [
+          { name: 'PostgreSQL', value: pg },
+          { name: 'Microsoft SQL Server', value: 'tedious' },
+          { name: 'MySQL', value: 'mysql2' },
+          { name: 'SQLite', value: 'sqlite3' }
+        ]
       }
-    ]).then(({ vscode }) => this.vscode = vscode);
+    ]).then(({ vscode, databases }) =>  {
+      this.vscode = vscode;
+      if (databases.includes(pg)) {
+        databases.push('pg-hstore');
+      }
+      this.databases = databases;
+    });
   }
 
   writing() {
@@ -59,8 +77,10 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.npmInstall([], {}, () => {}, { cwd: this.names.kebabName });
+    this.npmInstall(this.databases, {}, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
+      'concurrently',
+      'source-map-support',
       'nodemon',
       'mocha',
       'chai',

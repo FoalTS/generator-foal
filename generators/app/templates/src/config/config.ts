@@ -5,17 +5,26 @@ const configs = {
     app: {
       name: '<%= kebabName %> (dev)'
     },
+    db: {
+      uri: 'my_uri'
+    },
     port: process.env.PORT || 3000
   },
   production: {
     app: {
       name: '<%= kebabName %>'
     },
+    db: {
+      uri: 'my_uri'
+    },
     port: process.env.PORT || 3000
   },
   test: {
     app: {
       name: '<%= kebabName %> (test)'
+    },
+    db: {
+      uri: 'my_uri'
     },
     port: process.env.PORT || 3000
   }
