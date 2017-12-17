@@ -78,6 +78,7 @@ module.exports = class extends Generator {
 
   install() {
     this.npmInstall(this.databases, {}, () => {}, { cwd: this.names.kebabName });
+    this.npmInstall([], {}, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'concurrently',
       'source-map-support',
