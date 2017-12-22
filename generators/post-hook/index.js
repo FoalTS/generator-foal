@@ -9,8 +9,8 @@ module.exports = class extends Generator {
     this.argument('name', {
       type: String,
       required: true,
-      desc: 'name of the controller binder'
-    });
+      desc: 'name of the post-hook'
+    });   
   }
 
   initializing() {
@@ -19,13 +19,13 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copyTpl(
-      this.templatePath('controller-binder.ts'),
-      this.destinationPath(`${this.names.kebabName}.binder.ts`),
+      this.templatePath('post-hook.ts'),
+      this.destinationPath(`${this.names.kebabName}.post-hook.ts`),
       this.names
     );
     this.fs.copyTpl(
-      this.templatePath('controller-interface.ts'),
-      this.destinationPath(`${this.names.kebabName}.interface.ts`),
+      this.templatePath('post-hook.spec.ts'),
+      this.destinationPath(`${this.names.kebabName}.post-hook.spec.ts`),
       this.names
     );
   }
