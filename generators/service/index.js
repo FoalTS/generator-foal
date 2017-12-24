@@ -23,10 +23,10 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'type',
         message: 'Type',
-        choices: [ 'None', 'Sequelize', 'Sequelize-connection' ],
+        choices: [ 'None', 'CRUD', 'Partial CRUD', 'Sequelize', 'Sequelize connection', 'View' ],
         default: 0
       }
-    ]).then(({ type }) => this.type = type.toLowerCase());
+    ]).then(({ type }) => this.type = type.toLowerCase().replace(' ', '-'));
   }
 
   writing() {
@@ -46,7 +46,7 @@ module.exports = class extends Generator {
 
   install() {
     if (['sequelize', 'sequelize-connection'].includes(this.type)) {
-      this.npmInstall([ '@foal/sequelize@0.3.0' ], { 'save': true });
+      this.npmInstall([ '@foal/sequelize@0.4.0-alpha.0' ], { 'save': true });
     }
   }
 };

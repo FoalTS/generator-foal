@@ -10,12 +10,16 @@
     "dev:app": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"nodemon -r source-map-support/register -e js ./dist/main.js\"",
     "dev:test": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"mocha -r source-map-support/register -w \"./dist/**/*.spec.js\"\""
   },
+  "engines": {
+    "node": ">=8"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "helmet": "^3.9.0",
     "@types/node": "^8.0.47",
-    "@foal/core": "^0.3.0",
-    "@foal/express": "^0.3.0"
+    "@foal/core": "^0.4.0-alpha.0",
+    "@foal/common": "^0.4.0-alpha.0",
+    "@foal/express": "^0.4.0-alpha.0"
   }
 }

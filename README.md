@@ -5,7 +5,7 @@
 
 Yeoman generators to quickly start a project and create components (services, controllers, etc.)
 
-**This work is in progress**
+**FoalTS v0.4.0 is currently under alpha prerelease.**
 
 ## Get started
 
@@ -18,17 +18,17 @@ npm install -g generator-foal
 # Create an app
 yo foal my-app
 
-# Create a controller
-yo foal:controller my-controller
-
-# Create a controller binder
-yo foal:controller-binder my-controller-binder
-
-# Create a pre-hook
-yo foal:pre-hook my-pre-hook
+# Create a controller factory
+yo foal:controller-factory my-controller-factory
 
 # Create a module
 yo foal:module my-module
+
+# Create a post-hook
+yo foal:post-hook my-post-hook
+
+# Create a pre-hook
+yo foal:pre-hook my-pre-hook
 
 # Create a service
 yo foal:service my-service
