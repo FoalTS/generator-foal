@@ -18,8 +18,8 @@
     "express": "^4.16.2",
     "helmet": "^3.9.0",
     "@types/node": "^8.0.47",
-    "@foal/core": "^0.4.0",
-    "@foal/common": "^0.4.0",
-    "@foal/express": "^0.4.0"
+    "@foal/core": "^0.4.0-alpha.0",
+    "@foal/common": "^0.4.0-alpha.0",
+    "@foal/express": "^0.4.0-alpha.0"
   }
 }
