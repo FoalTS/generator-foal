@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/generator-foal.svg)](https://badge.fury.io/js/generator-foal)
 [![Build Status](https://travis-ci.org/FoalTS/generator-foal.svg?branch=add-travis)](https://travis-ci.org/FoalTS/generator-foal)
+[![Known Vulnerabilities](https://snyk.io/test/github/foalts/generator-foal/badge.svg?targetFile=generators%2Fapp%2Ftemplates%2Fpackage.json)](https://snyk.io/test/github/foalts/generator-foal?targetFile=generators%2Fapp%2Ftemplates%2Fpackage.json)
 
 Yeoman generators to quickly start a project and create components (services, controllers, etc.)
 
