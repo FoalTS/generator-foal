@@ -5,7 +5,7 @@
 
 Yeoman generators to quickly start a project and create components (services, controllers, etc.)
 
-**Foal v0.4 is currenlty an alpha release**
+**FoalTS v0.4.0 is currently under alpha prerelease.**
 
 ## Get started
 
