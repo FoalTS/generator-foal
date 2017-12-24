@@ -23,10 +23,10 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'type',
         message: 'Type',
-        choices: [ 'None', 'Sequelize', 'Sequelize-connection' ],
+        choices: [ 'None', 'CRUD', 'Partial CRUD', 'Sequelize', 'Sequelize connection', 'View' ],
         default: 0
       }
-    ]).then(({ type }) => this.type = type.toLowerCase());
+    ]).then(({ type }) => this.type = type.toLowerCase().replace(' ', '-'));
   }
 
   writing() {
