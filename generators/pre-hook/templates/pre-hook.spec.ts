@@ -1,4 +1,4 @@
-import { getPreMiddleware, ServiceManager } from '@foal/core';
+import { Context, getPreMiddleware, ServiceManager } from '@foal/core';
 import { expect } from 'chai';
 
 import { <%= camelName %> } from './<%= kebabName %>.pre-hook';

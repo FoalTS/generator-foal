@@ -1,4 +1,4 @@
-import { getPostMiddleware, ServiceManager } from '@foal/core';
+import { Context, getPostMiddleware, ServiceManager } from '@foal/core';
 import { expect } from 'chai';
 
 import { <%= camelName %> } from './<%= kebabName %>.post-hook';
