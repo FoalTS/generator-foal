@@ -1,12 +1,14 @@
-import { PreMiddleware } from '@foal/core';
+import { createEmptyContext, getPreMiddleware, ServiceManager } from '@foal/core';
+import { expect } from 'chai';
 
-import { make<%= CamelName %>Middleware } from './<%= kebabName %>.pre-hook';
+import { <%= camelName %> } from './<%= kebabName %>.pre-hook';
 
-describe('make<%= CamelName %>Middleware', () => {
+describe('<%= camelName %>', () => {
 
-  let middleware: PreMiddleware;
+  it('should do something.', () => {
+    const middleware = getPreMiddleware(<%= camelName %>());
+    const ctx = createEmptyContext();
 
-  it('when it is called should return a middleware.', () => {
-    middleware = make<%= CamelName %>Middleware();
+    middleware(ctx, new ServiceManager());
   });
 });
