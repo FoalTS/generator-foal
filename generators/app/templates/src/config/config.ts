@@ -8,7 +8,11 @@ const configs = {
     db: {
       uri: 'my_uri'
     },
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
+    errors: {
+      logErrors: true,
+      sendStack: true
+    }
   },
   production: {
     app: {
@@ -17,7 +21,11 @@ const configs = {
     db: {
       uri: 'my_uri'
     },
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
+    errors: {
+      logErrors: true,
+      sendStack: false
+    }
   },
   test: {
     app: {
@@ -26,7 +34,11 @@ const configs = {
     db: {
       uri: 'my_uri'
     },
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
+    errors: {
+      logErrors: false,
+      sendStack: true
+    }
   }
 };
 
