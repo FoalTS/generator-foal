@@ -1,3 +1,5 @@
+import { logOptions } from '@foal/express';
+
 const env = process.env.NODE_ENV || 'development';
 
 const configs = {
@@ -10,7 +12,7 @@ const configs = {
     },
     port: process.env.PORT || 3000,
     errors: {
-      logErrors: true,
+      logs: '500' as logOptions,
       sendStack: true
     }
   },
@@ -23,7 +25,7 @@ const configs = {
     },
     port: process.env.PORT || 3000,
     errors: {
-      logErrors: true,
+      logErrors: '500' as logOptions,
       sendStack: false
     }
   },
@@ -36,7 +38,7 @@ const configs = {
     },
     port: process.env.PORT || 3000,
     errors: {
-      logErrors: false,
+      logErrors: 'none' as logOptions,
       sendStack: true
     }
   }
