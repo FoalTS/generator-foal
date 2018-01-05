@@ -35,6 +35,14 @@ const configs = {
     },
     port: process.env.PORT || 3000,
     session: {
+      cookie: {<% if (domain) { %>
+        domain: '<%= domain %>',<% } %>
+        httpOnly: true,
+        maxAge: 60 * 60 * 1000, // 1 hour
+        path: '/',
+        secure: true,
+      },
+      name: 'sessionId',
       resave: false,
       saveUninitialized: false,
       secret: '<%= prodSecret1 %>'

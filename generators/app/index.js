@@ -28,6 +28,12 @@ module.exports = class extends Generator {
         default: true
       },
       {
+        type: 'input',
+        name: 'domain',
+        message: 'What is your domain (ex: example.com)?',
+        default: ''
+      },
+      {
         type: 'checkbox',
         name: 'databases',
         message: 'Which databases will you be using?',
@@ -38,8 +44,9 @@ module.exports = class extends Generator {
           { name: 'SQLite', value: 'sqlite3' }
         ]
       }
-    ]).then(({ vscode, databases }) =>  {
+    ]).then(({ vscode, domain, databases }) =>  {
       this.vscode = vscode;
+      this.domain = domain;
       if (databases.includes(pg)) {
         databases.push('pg-hstore');
       }
@@ -50,6 +57,7 @@ module.exports = class extends Generator {
   writing() {
     const locals = {
       ...this.names,
+      domain: this.domain,
       devSecret1: crypto.randomBytes(32).toString('hex'),
       prodSecret1: crypto.randomBytes(32).toString('hex'),
       testSecret1: crypto.randomBytes(32).toString('hex'),
