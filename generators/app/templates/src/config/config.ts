@@ -1,3 +1,5 @@
+import { logOptions } from '@foal/express';
+
 const env = process.env.NODE_ENV || 'development';
 
 const configs = {
@@ -8,7 +10,11 @@ const configs = {
     db: {
       uri: 'my_uri'
     },
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
+    errors: {
+      logs: '500' as logOptions,
+      sendStack: true
+    }
   },
   production: {
     app: {
@@ -17,7 +23,11 @@ const configs = {
     db: {
       uri: 'my_uri'
     },
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
+    errors: {
+      logErrors: '500' as logOptions,
+      sendStack: false
+    }
   },
   test: {
     app: {
@@ -26,7 +36,11 @@ const configs = {
     db: {
       uri: 'my_uri'
     },
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
+    errors: {
+      logErrors: 'none' as logOptions,
+      sendStack: true
+    }
   }
 };
 
