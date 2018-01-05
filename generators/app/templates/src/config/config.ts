@@ -10,11 +10,17 @@ const configs = {
     db: {
       uri: 'my_uri'
     },
-    port: process.env.PORT || 3000,
     errors: {
       logs: '500' as logOptions,
       sendStack: true
-    }
+    },
+    port: process.env.PORT || 3000,
+    session: {
+      resave: false,
+      saveUninitialized: false,
+      secret: '<%= devSecret1 %>'
+        + '<%= devSecret2 %>',
+    },
   },
   production: {
     app: {
@@ -23,11 +29,17 @@ const configs = {
     db: {
       uri: 'my_uri'
     },
-    port: process.env.PORT || 3000,
     errors: {
       logErrors: '500' as logOptions,
       sendStack: false
-    }
+    },
+    port: process.env.PORT || 3000,
+    session: {
+      resave: false,
+      saveUninitialized: false,
+      secret: '<%= prodSecret1 %>'
+        + '<%= prodSecret2 %>',
+    },
   },
   test: {
     app: {
@@ -36,11 +48,17 @@ const configs = {
     db: {
       uri: 'my_uri'
     },
-    port: process.env.PORT || 3000,
     errors: {
       logErrors: 'none' as logOptions,
       sendStack: true
-    }
+    },
+    port: process.env.PORT || 3000,
+    session: {
+      resave: false,
+      saveUninitialized: false,
+      secret: '<%= testSecret1 %>'
+        + '<%= testSecret2 %>',
+    },
   }
 };
 
