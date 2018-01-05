@@ -77,7 +77,12 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.npmInstall(this.databases, {}, () => {}, { cwd: this.names.kebabName });
+    if (this.databases.length !== 0) {
+      this.npmInstall([
+        '@foal/sequelize@0.4.0-alpha.2',
+        ...this.databases
+      ], {}, () => {}, { cwd: this.names.kebabName });
+    }
     this.npmInstall([], {}, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'concurrently',
