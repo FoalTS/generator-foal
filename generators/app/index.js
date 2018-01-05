@@ -1,4 +1,5 @@
 const Generator = require('yeoman-generator');
+const crypto = require('crypto');
 
 const { getNames } = require('../helpers');
 
@@ -47,6 +48,15 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    const locals = {
+      ...this.names,
+      devSecret1: crypto.randomBytes(32).toString('hex'),
+      prodSecret1: crypto.randomBytes(32).toString('hex'),
+      testSecret1: crypto.randomBytes(32).toString('hex'),
+      devSecret2: crypto.randomBytes(32).toString('hex'),
+      prodSecret2: crypto.randomBytes(32).toString('hex'),
+      testSecret2: crypto.randomBytes(32).toString('hex'),
+    }
     const paths = [
       'src/app/app.module.ts',
       'src/config/config.ts',
@@ -66,13 +76,13 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(path),
         this.destinationPath(`${this.names.kebabName}/${path}`),
-        this.names
+        locals
       );
     }
     this.fs.copyTpl(
       this.templatePath('gitignore'),
       this.destinationPath(`${this.names.kebabName}/.gitignore`),
-      this.names
+      locals
     );
   }
 
