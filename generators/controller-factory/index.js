@@ -24,6 +24,11 @@ module.exports = class extends Generator {
       this.names
     );
     this.fs.copyTpl(
+      this.templatePath('controller-factory.spec.ts'),
+      this.destinationPath(`${this.names.kebabName}.controller-factory.spec.ts`),
+      this.names
+    );
+    this.fs.copyTpl(
       this.templatePath('service-interface.ts'),
       this.destinationPath(`${this.names.kebabName}-service.interface.ts`),
       this.names
