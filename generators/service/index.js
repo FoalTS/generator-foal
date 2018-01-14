@@ -43,10 +43,4 @@ module.exports = class extends Generator {
       this.names
     );
   }
-
-  install() {
-    if (['sequelize', 'sequelize-connection'].includes(this.type)) {
-      this.npmInstall([ '@foal/sequelize@0.4.0-alpha.2' ], { 'save': true });
-    }
-  }
 };

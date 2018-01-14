@@ -1,4 +1,5 @@
 const Generator = require('yeoman-generator');
+const crypto = require('crypto');
 
 const { getNames } = require('../helpers');
 
@@ -27,18 +28,23 @@ module.exports = class extends Generator {
         default: true
       },
       {
+        type: 'input',
+        name: 'domain',
+        message: 'What is your domain (ex: example.com)?',
+        default: ''
+      },
+      {
         type: 'checkbox',
         name: 'databases',
         message: 'Which databases will you be using?',
         choices: [
           { name: 'PostgreSQL', value: pg },
-          { name: 'Microsoft SQL Server', value: 'tedious' },
           { name: 'MySQL', value: 'mysql2' },
-          { name: 'SQLite', value: 'sqlite3' }
         ]
       }
-    ]).then(({ vscode, databases }) =>  {
+    ]).then(({ vscode, domain, databases }) =>  {
       this.vscode = vscode;
+      this.domain = domain;
       if (databases.includes(pg)) {
         databases.push('pg-hstore');
       }
@@ -47,6 +53,16 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    const locals = {
+      ...this.names,
+      domain: this.domain,
+      devSecret1: crypto.randomBytes(32).toString('hex'),
+      prodSecret1: crypto.randomBytes(32).toString('hex'),
+      testSecret1: crypto.randomBytes(32).toString('hex'),
+      devSecret2: crypto.randomBytes(32).toString('hex'),
+      prodSecret2: crypto.randomBytes(32).toString('hex'),
+      testSecret2: crypto.randomBytes(32).toString('hex'),
+    }
     const paths = [
       'src/app/app.module.ts',
       'src/config/config.ts',
@@ -66,18 +82,23 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(path),
         this.destinationPath(`${this.names.kebabName}/${path}`),
-        this.names
+        locals
       );
     }
     this.fs.copyTpl(
       this.templatePath('gitignore'),
       this.destinationPath(`${this.names.kebabName}/.gitignore`),
-      this.names
+      locals
     );
   }
 
   install() {
-    this.npmInstall(this.databases, {}, () => {}, { cwd: this.names.kebabName });
+    if (this.databases.length !== 0) {
+      this.npmInstall([
+        '@foal/sequelize@0.4.0-alpha.2',
+        ...this.databases
+      ], {}, () => {}, { cwd: this.names.kebabName });
+    }
     this.npmInstall([], {}, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'concurrently',
