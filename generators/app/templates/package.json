@@ -19,8 +19,8 @@
     "express-session": "^1.15.6",
     "helmet": "^3.9.0",
     "@types/node": "^8.0.47",
-    "@foal/core": "^0.4.0-alpha.2",
-    "@foal/common": "^0.4.0-alpha.2",
-    "@foal/express": "^0.4.0-alpha.2"
+    "@foal/core": "^0.4.0-alpha.3",
+    "@foal/common": "^0.4.0-alpha.3",
+    "@foal/express": "^0.4.0-alpha.3"
   }
 }

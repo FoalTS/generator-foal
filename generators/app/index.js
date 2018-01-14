@@ -95,7 +95,7 @@ module.exports = class extends Generator {
   install() {
     if (this.databases.length !== 0) {
       this.npmInstall([
-        '@foal/sequelize@0.4.0-alpha.2',
+        '@foal/sequelize@0.4.0-alpha.3',
         ...this.databases
       ], {}, () => {}, { cwd: this.names.kebabName });
     }
