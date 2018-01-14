@@ -39,9 +39,7 @@ module.exports = class extends Generator {
         message: 'Which databases will you be using?',
         choices: [
           { name: 'PostgreSQL', value: pg },
-          { name: 'Microsoft SQL Server', value: 'tedious' },
           { name: 'MySQL', value: 'mysql2' },
-          { name: 'SQLite', value: 'sqlite3' }
         ]
       }
     ]).then(({ vscode, domain, databases }) =>  {
