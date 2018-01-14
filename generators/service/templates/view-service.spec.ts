@@ -12,7 +12,7 @@ describe('<%= CamelName %>Service', () => {
 
     it('should do something.', () => {
 
-    })
+    });
 
   });
 

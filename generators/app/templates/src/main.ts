@@ -1,5 +1,5 @@
-import { Foal, handleErrors } from '@foal/core';
-import { getCallback } from '@foal/express';
+import { Foal } from '@foal/core';
+import { getCallback, handleErrors } from '@foal/express';
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as session from 'express-session';
