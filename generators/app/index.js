@@ -1,5 +1,6 @@
 const Generator = require('yeoman-generator');
 const crypto = require('crypto');
+const mkdirp = require('mkdirp');
 
 const { getNames } = require('../helpers');
 
@@ -90,6 +91,7 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.names.kebabName}/.gitignore`),
       locals
     );
+    mkdirp.sync(`${this.names.kebabName}/public/`);
   }
 
   install() {
