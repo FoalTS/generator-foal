@@ -15,6 +15,7 @@ const configs = {
       sendStack: true
     },
     port: process.env.PORT || 3000,
+    public: '../public/',
     session: {
       resave: false,
       saveUninitialized: false,
@@ -34,6 +35,7 @@ const configs = {
       sendStack: false
     },
     port: process.env.PORT || 3000,
+    public: '../public/',
     session: {
       cookie: {<% if (domain) { %>
         domain: '<%= domain %>',<% } %>
@@ -61,6 +63,7 @@ const configs = {
       sendStack: true
     },
     port: process.env.PORT || 3000,
+    public: '../public/',
     session: {
       resave: false,
       saveUninitialized: false,
