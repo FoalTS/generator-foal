@@ -1,4 +1,5 @@
 import { <%= CamelName %>Service } from './<%= kebabName %>.service';
+
 import { ConnectionService } from './connection.service';
 
 describe('<%= CamelName %>Service', () => {
