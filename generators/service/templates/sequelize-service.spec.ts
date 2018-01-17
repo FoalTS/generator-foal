@@ -1,13 +1,14 @@
 import { <%= CamelName %>Service } from './<%= kebabName %>.service';
-import { MySequelizeConnection } from 'somewhere';
+
+import { ConnectionService } from './connection.service';
 
 describe('<%= CamelName %>Service', () => {
 
   let service: <%= CamelName %>Service;
-  let connection: MySequelizeConnection;
+  let connection: ConnectionService;
 
   it('should instantiate.', () => {
-    connection = new MySequelizeConnection();
+    connection = new ConnectionService();
     service = new <%= CamelName %>Service(connection);
   });
 });
