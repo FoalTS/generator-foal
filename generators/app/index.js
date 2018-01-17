@@ -57,6 +57,7 @@ module.exports = class extends Generator {
     const locals = {
       ...this.names,
       domain: this.domain,
+      appName: '<%= appName %>',
       devSecret1: crypto.randomBytes(32).toString('hex'),
       prodSecret1: crypto.randomBytes(32).toString('hex'),
       testSecret1: crypto.randomBytes(32).toString('hex'),
@@ -66,10 +67,13 @@ module.exports = class extends Generator {
     }
     const paths = [
       'src/app/app.module.ts',
+      'src/app/index-view.service.spec.ts',
+      'src/app/index-view.service.ts',
       'src/config/config.ts',
       'src/config/index.ts',
-      'src/main.spec.ts',
       'src/main.ts',
+
+      'templates/index.html',
 
       'package.json',
       'tsconfig.json',
