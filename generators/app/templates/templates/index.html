@@ -5,8 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><%- appName %></title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      background-color: #3e444a;
+      color: rgba(255,255,255,0.9);
+      padding: 10px;
+      /* font-size: x-large; */
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 1.6em;
+    }
+    .container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .cards {
+      margin-top: 15px;
+      display: flex;
+    }
+    .card {
+      padding: 15px;
+      background-color: lightskyblue;
+      margin-left: 10px;
+      border-radius: 8px;
+    }
+    .card:first-child {
+      margin-left: 0px;
+    }
+    .card a {
+      font-size: x-large;
+      color: #2853ff;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to <%- appName %>!</h1>
+  <header class="header">
+    <h1>Welcome to <%- appName %>!</h1>
+  </header>
+  <section class="container">
+    <img src="logo.png" alt="">
+    <h1>You have successfully installed FoalTS!</h1>
+    <div class="cards">
+      <div class="card">
+        <a href="https://foalts.gitbooks.io/docs/">Get started</a>
+      </div>
+      <div class="card">
+        <a href="https://foalts.gitbooks.io/docs/">Documentation</a>
+      </div>
+      <div class="card">
+        <a href="https://twitter.com/FoalTs">Twitter</a>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

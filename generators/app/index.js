@@ -95,7 +95,10 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.names.kebabName}/.gitignore`),
       locals
     );
-    mkdirp.sync(`${this.names.kebabName}/public/`);
+    this.fs.copy(
+      this.templatePath('public/logo.png'),
+      this.destinationPath(`${this.names.kebabName}/public/logo.png`),
+    )
   }
 
   install() {
