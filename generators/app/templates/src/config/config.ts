@@ -8,7 +8,8 @@ const configs = {
       name: '<%= kebabName %> (dev)'
     },
     db: {
-      uri: process.env.DB_URI || 'my_uri'
+      uri: process.env.DB_URI || 'my_uri',
+      options: {},
     },
     errors: {
       logs: '500' as logOptions,
@@ -28,7 +29,8 @@ const configs = {
       name: '<%= kebabName %>'
     },
     db: {
-      uri: process.env.DB_URI || 'my_uri'
+      uri: process.env.DB_URI || 'my_uri',
+      options: {},
     },
     errors: {
       logErrors: '500' as logOptions,
@@ -56,7 +58,8 @@ const configs = {
       name: '<%= kebabName %> (test)'
     },
     db: {
-      uri: process.env.DB_URI || 'my_uri'
+      uri: process.env.DB_URI || 'my_uri',
+      options: {},
     },
     errors: {
       logErrors: 'none' as logOptions,
