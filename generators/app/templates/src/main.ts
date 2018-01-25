@@ -1,5 +1,3 @@
-import 'source-map-support/register';
-
 import { Foal } from '@foal/core';
 import { getCallback, handleErrors } from '@foal/express';
 import * as bodyParser from 'body-parser';
