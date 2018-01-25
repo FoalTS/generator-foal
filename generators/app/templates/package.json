@@ -6,8 +6,8 @@
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "build": "tsc",
     "test": "mocha -r source-map-support/register \"./dist/**/*.spec.js\"",
-    "start": "node -r source-map-support/register ./dist/main.js",
-    "dev:app": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"nodemon -r source-map-support/register -e js ./dist/main.js\"",
+    "start": "node ./dist/main.js",
+    "dev:app": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"nodemon -e js ./dist/main.js\"",
     "dev:test": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"mocha -r source-map-support/register -w \"./dist/**/*.spec.js\"\""
   },
   "engines": {
