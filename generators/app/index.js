@@ -76,6 +76,7 @@ module.exports = class extends Generator {
       'templates/index.html',
 
       'package.json',
+      'server.js',
       'tsconfig.json',
       'tslint.json',
     ];
