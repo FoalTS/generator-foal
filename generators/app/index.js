@@ -20,7 +20,6 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    const pg = 'pg@6';
     return this.prompt([
       {
         type: 'confirm',
@@ -35,21 +34,26 @@ module.exports = class extends Generator {
         default: ''
       },
       {
-        type: 'checkbox',
-        name: 'databases',
-        message: 'Which databases will you be using?',
+        type: 'list',
+        name: 'database',
+        message: 'Which database are you connecting to?',
         choices: [
-          { name: 'PostgreSQL', value: pg },
-          { name: 'MySQL', value: 'mysql2' },
+          { name: 'None', value: null },
+          { name: 'PostgreSQL', value: 'postgres' },
+          { name: 'MySQL', value: 'mysql' },
         ]
-      }
-    ]).then(({ vscode, domain, databases }) =>  {
+      },
+      {
+        type: 'input',
+        name: 'uri',
+        message: 'What is your database uri (leave blank if no database)?',
+        default: ''
+      },
+    ]).then(({ vscode, domain, database, uri }) =>  {
       this.vscode = vscode;
       this.domain = domain;
-      if (databases.includes(pg)) {
-        databases.push('pg-hstore');
-      }
-      this.databases = databases;
+      this.database = database;
+      this.uri = uri || 'my_uri' ;
     });
   }
 
@@ -57,6 +61,7 @@ module.exports = class extends Generator {
     const locals = {
       ...this.names,
       domain: this.domain,
+      uri: this.uri,
       appName: '<%= appName %>',
       devSecret1: crypto.randomBytes(32).toString('hex'),
       prodSecret1: crypto.randomBytes(32).toString('hex'),
@@ -103,11 +108,17 @@ module.exports = class extends Generator {
   }
 
   install() {
-    if (this.databases.length !== 0) {
-      this.npmInstall([
-        '@foal/sequelize@0.4.0-alpha.3',
-        ...this.databases
-      ], {}, () => {}, { cwd: this.names.kebabName });
+    let dbDependencies = [];
+    switch(this.database) {
+      case 'postgres':
+        dbDependencies = [ '@foal/sequelize@0.4.0-alpha.3', 'pg@6', 'pg-hstore' ];
+        break;
+      case 'mysql':
+        dbDependencies = [ '@foal/sequelize@0.4.0-alpha.3', 'mysql2' ];
+        break;
+    }
+    if (dbDependencies.length !== 0) {
+      this.npmInstall(dbDependencies, {}, () => {}, { cwd: this.names.kebabName });
     }
     this.npmInstall([], {}, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
