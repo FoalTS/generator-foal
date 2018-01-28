@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "lint": "tslint -p tslint.json",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
     "build": "tsc",
     "test": "mocha -r source-map-support/register \"./dist/**/*.spec.js\"",
-    "start": "node -r source-map-support/register ./dist/main.js",
-    "dev:app": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"nodemon -r source-map-support/register -e js ./dist/main.js\"",
+    "start": "node server.js",
+    "dev:app": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"nodemon -e js server.js\"",
     "dev:test": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"mocha -r source-map-support/register -w \"./dist/**/*.spec.js\"\""
   },
   "engines": {
@@ -21,6 +21,8 @@
     "@types/node": "^8.0.47",
     "@foal/core": "^0.4.0-alpha.3",
     "@foal/common": "^0.4.0-alpha.3",
-    "@foal/express": "^0.4.0-alpha.3"
+    "@foal/ejs": "^0.4.0-alpha.3",
+    "@foal/express": "^0.4.0-alpha.3",
+    "source-map-support": "^0.5.1"
   }
 }
