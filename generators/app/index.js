@@ -19,12 +19,12 @@ module.exports = class extends Generator {
     this.names = getNames(this.options.name);
     this.log(
 `
-     _______   ________   ___           ___     _________   _______
-    /  ____/  / ____  /  / _ \\         /  /    /___  ___/  / _____/
-   /  /___   / /   / /  / /_\\ \\       /  /        / /     / /____
-  /  ____/  / /   / /  / _____ \\     /  /        / /     /____  /
- /  /      / /__ / /  / /     \\ \\   /  /____    / /     _____/ /
-/__/      /_______/  /_/       \\_\\ /_______/   /_/     /______/
+     _______   ________   ____        ___     _________   _______
+    /  ____/  / ____  /  / _  |      /  /    /___  ___/  / _____/
+   /  /___   / /   / /  / /_| |     /  /        / /     / /____
+  /  ____/  / /   / /  / ___  |    /  /        / /     /____  /
+ /  /      / /__ / /  / /   | |   /  /____    / /     _____/ /
+/__/      /_______/  /_/    |_|  /_______/   /_/     /______/
 
 `
     );
@@ -85,8 +85,10 @@ module.exports = class extends Generator {
       'src/app/app.module.ts',
       'src/app/index-view.service.spec.ts',
       'src/app/index-view.service.ts',
-      'src/config/config.ts',
+      'src/config/development.ts',
       'src/config/index.ts',
+      'src/config/production.ts',
+      'src/config/test.ts',
       'src/main.ts',
 
       'templates/index.html',
