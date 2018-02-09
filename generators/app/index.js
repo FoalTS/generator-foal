@@ -85,6 +85,7 @@ module.exports = class extends Generator {
       'src/app/app.module.ts',
       'src/app/index-view.service.spec.ts',
       'src/app/index-view.service.ts',
+      'src/config/config.ts',
       'src/config/development.ts',
       'src/config/index.ts',
       'src/config/production.ts',

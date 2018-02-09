@@ -1,18 +1,20 @@
 import { logOptions } from '@foal/express';
 
-export const config = {
+import { Config, toNumber } from './config';
+
+export const config: Config = {
   app: {
     name: '<%= kebabName %>'
   },
   db: {
     options: {},
-    uri:  process.env.DB_URI || 'my_uri',
+    uri: process.env.DB_URI || 'my_uri',
   },
   errors: {
     logs: '500' as logOptions,
     sendStack: false
   },
-  port: process.env.PORT || 3000,
+  port: toNumber(process.env.PORT || '3000'),
   public: '../public/',
   session: {
     cookie: {<% if (domain) { %>

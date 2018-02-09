@@ -1,6 +1,8 @@
 import { logOptions } from '@foal/express';
 
-export const config = {
+import { Config, toNumber } from './config';
+
+export const config: Config = {
   app: {
     name: '<%= kebabName %> (test)'
   },
@@ -12,7 +14,7 @@ export const config = {
     logs: 'none' as logOptions,
     sendStack: true
   },
-  port: process.env.PORT || 3000,
+  port: toNumber(process.env.PORT || '3000'),
   public: '../public/',
   session: {
     resave: false,
