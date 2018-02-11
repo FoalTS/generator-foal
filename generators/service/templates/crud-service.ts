@@ -6,7 +6,7 @@ export class <%= CamelName %>Service implements CRUDService {
   constructor() {}
 
   public create(data: any, query: ObjectType) {
-    
+
   }
 
   public get(id: any, query: ObjectType) {
