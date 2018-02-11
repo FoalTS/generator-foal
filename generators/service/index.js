@@ -23,7 +23,18 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'type',
         message: 'Type',
-        choices: [ 'None', 'CRUD', 'Partial CRUD', 'Sequelize', 'Sequelize connection', 'View' ],
+        choices: [
+          'None',
+          'CRUD',
+          {
+            name: 'EJS (template)',
+            value: 'EJS'
+          },
+          'Partial CRUD',
+          'Sequelize',
+          'Sequelize connection',
+          'View'
+        ],
         default: 0
       }
     ]).then(({ type }) => this.type = type.toLowerCase().replace(' ', '-'));
