@@ -11,8 +11,8 @@ describe('<%= CamelName %>Service', () => {
   describe('when create(data: any, query: ObjectType) is called', () => {
 
     it('should do something.', () => {
-      
-    })
+
+    });
 
   });
 
@@ -20,7 +20,7 @@ describe('<%= CamelName %>Service', () => {
 
     it('should do something.', () => {
 
-    })
+    });
 
   });
 
@@ -28,7 +28,7 @@ describe('<%= CamelName %>Service', () => {
 
     it('should do something.', () => {
 
-    })
+    });
 
   });
 
@@ -36,7 +36,7 @@ describe('<%= CamelName %>Service', () => {
 
     it('should do something.', () => {
 
-    })
+    });
 
   });
 
@@ -44,7 +44,7 @@ describe('<%= CamelName %>Service', () => {
 
     it('should do something.', () => {
 
-    })
+    });
 
   });
 
@@ -52,7 +52,7 @@ describe('<%= CamelName %>Service', () => {
 
     it('should do something.', () => {
 
-    })
+    });
 
   });
 
