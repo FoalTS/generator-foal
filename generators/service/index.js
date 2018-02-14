@@ -27,8 +27,12 @@ module.exports = class extends Generator {
           'None',
           'CRUD',
           {
-            name: 'EJS (template)',
-            value: 'EJS'
+            name: 'Single EJS template',
+            value: 'ejs'
+          },
+          {
+            name: 'Multiple EJS templates',
+            value: 'multiple-ejs'
           },
           'Partial CRUD',
           'Sequelize',
