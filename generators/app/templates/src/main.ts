@@ -1,4 +1,4 @@
-import { Foal } from '@foal/core';
+import { Foal, NotFoundError } from '@foal/core';
 import { getCallback, handleErrors } from '@foal/express';
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
@@ -21,6 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(config.session));
 
 app.use(getCallback(foal));
+
+app.use((req, res, next) => next(new NotFoundError()));
+
 app.use(handleErrors(config.errors));
 
 app.listen(config.port, () => console.log(`Listening on port ${config.port}...`));
