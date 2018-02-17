@@ -2,6 +2,7 @@ import { Foal, NotFoundError } from '@foal/core';
 import { getCallback, handleErrors } from '@foal/express';
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
+import * as morgan from 'morgan';
 import * as session from 'express-session';
 import * as helmet from 'helmet';
 import * as path from 'path';
@@ -13,6 +14,7 @@ const foal = new Foal(AppModule);
 
 const app = express();
 
+app.use(morgan(':method :url :status - :response-time ms'));
 app.use(express.static(path.join(__dirname, config.public)));
 
 app.use(helmet());
