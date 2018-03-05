@@ -10,10 +10,7 @@ export const config: Config = {
     options: {},
     uri: process.env.DB_URI || '<%= uri %>',
   },
-  errors: {
-    logs: '500' as logOptions,
-    sendStack: true
-  },
+  debugMode: true,
   port: toNumber(process.env.PORT || '3000'),
   public: '../public/',
   session: {

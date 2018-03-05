@@ -9,10 +9,7 @@ export interface Config extends ObjectType {
     options: ObjectType;
     uri: string;
   };
-  errors: {
-    logs: logOptions;
-    sendStack: boolean;
-  };
+  debugMode: boolean;
   port: number;
   public: string;
   session: {

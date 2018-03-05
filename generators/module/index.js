@@ -19,6 +19,11 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copyTpl(
+      this.templatePath('index.ts'),
+      this.destinationPath(`${this.names.kebabName}/index.ts`),
+      this.names
+    );
+    this.fs.copyTpl(
       this.templatePath('module.ts'),
       this.destinationPath(`${this.names.kebabName}/${this.names.kebabName}.module.ts`),
       this.names

@@ -8,4 +8,12 @@ describe('<%= CamelName %>Service', () => {
     service = new <%= CamelName %>Service();
   });
 
+  describe('when render is called', () => {
+
+    it('should return the rendered template.', () => {
+
+    });
+
+  });
+
 });

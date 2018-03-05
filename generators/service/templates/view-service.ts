@@ -5,7 +5,7 @@ import { ObjectType, Service } from '@foal/core';
 export class <%= CamelName %>Service implements ViewService {
   constructor() {}
 
-  public render(locals: ObjectType): string {
+  public render(locals: ObjectType): string | Promise<string> {
     return '';
   }
 }

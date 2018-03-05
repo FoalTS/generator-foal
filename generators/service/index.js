@@ -18,26 +18,25 @@ module.exports = class extends Generator {
   }
   
   prompting() {
+    function choice(name, value = name) {
+      return { name, value };
+    }
     return this.prompt([
       {
         type: 'list',
         name: 'type',
         message: 'Type',
         choices: [
-          'None',
-          'CRUD',
-          {
-            name: 'Single EJS template',
-            value: 'ejs'
-          },
-          {
-            name: 'Multiple EJS templates',
-            value: 'multiple-ejs'
-          },
-          'Partial CRUD',
-          'Sequelize',
-          'Sequelize connection',
-          'View'
+          choice('Empty', 'empty'),
+          choice('[Authenticator] Local authenticator (email and password)', 'local-authenticator'),
+          choice('[View] Single EJS template', 'ejs-template'),
+          choice('[MultipleViews] Multiple EJS templates', 'multiple-ejs-templates'),
+          choice('[Model] Sequelize model (PostgreSQL)', 'sequelize-model'),
+          choice('Sequelize connection (PostgreSQL)', 'sequelize-connection'),
+          choice('Authenticator (to implement)', 'authenticator'),
+          choice('Model (to implement)', 'model'),
+          choice('View (to implement)', 'view'),
+          choice('Multiple views (to implement)', 'multiple-views'),
         ],
         default: 0
       }

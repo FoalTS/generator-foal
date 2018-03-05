@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 import { <%= CamelName %>Service } from './<%= kebabName %>.service';
 
 describe('<%= CamelName %>Service', () => {
@@ -8,10 +10,13 @@ describe('<%= CamelName %>Service', () => {
     service = new <%= CamelName %>Service();
   });
 
-  describe('when render(name: string, locals: ObjectType): Promise<string> is called', () => {
+  describe('when render is called', () => {
 
-    it('should return the rendered template.', () => {
+    it('should return the rendered template.', async () => {
+      const actual = await service.render({});
+      const expected = '';
 
+      expect(actual).to.equal(expected);
     });
 
   });

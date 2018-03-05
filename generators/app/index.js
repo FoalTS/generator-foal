@@ -45,13 +45,19 @@ module.exports = class extends Generator {
         default: ''
       },
       {
+        type: 'confirm',
+        name: 'authentication',
+        message: 'Does your application need authentication?',
+        default: true
+      },
+      {
         type: 'list',
         name: 'database',
         message: 'Which database are you connecting to?',
         choices: [
           { name: 'None', value: null },
           { name: 'PostgreSQL', value: 'postgres' },
-          { name: 'MySQL', value: 'mysql' },
+          // { name: 'MySQL', value: 'mysql' },
         ]
       },
       {
@@ -60,9 +66,10 @@ module.exports = class extends Generator {
         message: 'What is your database uri (leave blank if no database)?',
         default: ''
       },
-    ]).then(({ vscode, domain, database, uri }) =>  {
+    ]).then(({ vscode, domain, authentication, database, uri }) =>  {
       this.vscode = vscode;
       this.domain = domain;
+      this.authentication = authentication;
       this.database = database;
       this.uri = uri || 'my_uri' ;
     });
@@ -125,11 +132,14 @@ module.exports = class extends Generator {
     let dbDependencies = [];
     switch(this.database) {
       case 'postgres':
-        dbDependencies = [ '@foal/sequelize@0.4.0-alpha.3', 'pg@6', 'pg-hstore' ];
+        dbDependencies.push('@foal/sequelize@0.4.0-alpha.3', 'pg@6', 'pg-hstore');
         break;
       case 'mysql':
-        dbDependencies = [ '@foal/sequelize@0.4.0-alpha.3', 'mysql2' ];
+        dbDependencies.push('@foal/sequelize@0.4.0-alpha.3', 'mysql2');
         break;
+    }
+    if (this.authentication) {
+      dbDependencies.push('@foal/authentication@0.4.0-alpha.3');
     }
     if (dbDependencies.length !== 0) {
       this.npmInstall(dbDependencies, {}, () => {}, { cwd: this.names.kebabName });
