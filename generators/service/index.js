@@ -28,7 +28,7 @@ module.exports = class extends Generator {
         message: 'Type',
         choices: [
           choice('Empty', 'empty'),
-          choice('[Authenticator] Local authenticator (email and password)', 'local-authenticator'),
+          choice('[Authenticator] Local authenticator (with email and password)', 'local-authenticator'),
           choice('[View] Single EJS template', 'ejs-template'),
           choice('[MultipleViews] Multiple EJS templates', 'multiple-ejs-templates'),
           choice('[Model] Sequelize model (PostgreSQL)', 'sequelize-model'),
@@ -40,7 +40,7 @@ module.exports = class extends Generator {
         ],
         default: 0
       }
-    ]).then(({ type }) => this.type = type.toLowerCase().replace(' ', '-'));
+    ]).then(({ type }) => this.type = type);
   }
 
   writing() {
@@ -51,10 +51,12 @@ module.exports = class extends Generator {
         underscoreName: `${this.names.kebabName.replace(/-/g,'_')}`
       }, this.names)
     );
-    this.fs.copyTpl(
-      this.templatePath(`${this.type}-service.spec.ts`),
-      this.destinationPath(`${this.names.kebabName}.service.spec.ts`),
-      this.names
-    );
+    if (this.type !== 'local-authenticator') {
+      this.fs.copyTpl(
+        this.templatePath(`${this.type}-service.spec.ts`),
+        this.destinationPath(`${this.names.kebabName}.service.spec.ts`),
+        this.names
+      );
+    }
   }
 };

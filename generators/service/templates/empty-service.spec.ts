@@ -2,9 +2,8 @@ import { <%= CamelName %>Service } from './<%= kebabName %>.service';
 
 describe('<%= CamelName %>Service', () => {
 
-  let service: <%= CamelName %>Service;
-
-  it('should instantiate.', () => {
-    service = new <%= CamelName %>Service();
+  it('should do something.', () => {
+    const service = new <%= CamelName %>Service();
   });
+
 });

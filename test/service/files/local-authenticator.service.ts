@@ -5,7 +5,7 @@ import { User } from 'somewhere';
 import { UserService } from 'somewhere';
 
 @Service()
-export class <%= CamelName %>Service extends LocalAuthenticatorService<User> {
+export class FooBarService extends LocalAuthenticatorService<User> {
   constructor(userService: UserService) {
     super(userService);
   }
