@@ -2,7 +2,7 @@ import { ModelService, ObjectDoesNotExist } from '@foal/common';
 import { ObjectType } from '@foal/core';
 import { expect } from 'chai';
 
-import { <%= CamelName %>Service } from './foo-bar.service';
+import { <%= CamelName %>Service } from './<%= kebabName %>.service';
 
 describe('<%= CamelName %>Service', () => {
 
