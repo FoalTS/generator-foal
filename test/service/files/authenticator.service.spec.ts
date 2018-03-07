@@ -1,4 +1,4 @@
-import { ModelService, ObjectDoesNotExist } from '@foal/common';
+import { IModelService, ObjectDoesNotExist } from '@foal/common';
 import { ObjectType } from '@foal/core';
 import { expect } from 'chai';
 
@@ -13,7 +13,7 @@ describe('FooBarService', () => {
   class ConcreteClass extends FooBarService<User> {}
   let service: ConcreteClass;
 
-  class UserModelService implements ModelService<User, ObjectType, ObjectType, any> {
+  class UserModelService implements IModelService<User, ObjectType, ObjectType, any> {
     public createOne(): any {}
     public createMany(): any {}
 
