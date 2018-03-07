@@ -1,13 +1,13 @@
 import { expect } from 'chai';
 
-import { <%= CamelName %>Service } from './<%= kebabName %>.service';
+import { FooBarService } from './foo-bar.service';
 
-describe('<%= CamelName %>Service', () => {
+describe('FooBarService', () => {
 
   describe('when render is called', () => {
 
     it('should return the expected string.', async () => {
-      const service = new <%= CamelName %>Service();
+      const service = new FooBarService();
       const actual = await service.render({});
 
       expect(actual).to.equal('');
