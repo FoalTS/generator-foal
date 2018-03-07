@@ -26,30 +26,14 @@ module.exports = class extends Generator {
  /  /      / /__ / /  / /   | |   /  /____    / /     _____/ /
 /__/      /_______/  /_/    |_|  /_______/   /_/     /______/
 
+
+Welcome to the FoalTS generator! The following questions will help you create your app.
 `
     );
   }
 
-  prompting() {
-    return this.prompt([
-      {
-        type: 'confirm',
-        name: 'vscode',
-        message: 'Add default VSCode config files for debugging?',
-        default: true
-      },
-      {
-        type: 'input',
-        name: 'domain',
-        message: 'What is your domain (ex: example.com)?',
-        default: ''
-      },
-      {
-        type: 'confirm',
-        name: 'authentication',
-        message: 'Does your application need authentication?',
-        default: true
-      },
+  async prompting() {
+    const { database } = await this.prompt([
       {
         type: 'list',
         name: 'database',
@@ -58,28 +42,68 @@ module.exports = class extends Generator {
           { name: 'None', value: null },
           { name: 'PostgreSQL', value: 'postgres' },
           // { name: 'MySQL', value: 'mysql' },
-        ]
+        ],
+        default: 'postgres'
       },
+    ]);
+    if (database) {
+      this.database = database;
+
+      const { uri, authentication } = await this.prompt([
+        {
+          type: 'input',
+          name: 'uri',
+          message: 'What is your database uri?',
+          default: ''
+        },
+        {
+          type: 'confirm',
+          name: 'authentication',
+          message: 'Does your application need authentication?',
+          default: true
+        },
+      ]);
+
+      this.uri = uri;
+
+      if (authentication) {
+        this.authentication = authentication;
+
+        function choice(name, value = name) {
+          return { name, value };
+        }
+        const { authenticator } = await this.prompt([
+          {
+            type: 'list',
+            name: 'type',
+            message: 'Which authenticator do you want to use?',
+            choices: [
+              choice('Local authenticator (with email and password)', 'local-authenticator'),
+              choice('I\'ll create one on my own.', 'authenticator')
+            ],
+            default: 0
+          }
+        ]);
+        
+        this.authenticator =  authenticator;
+      }
+    }
+    const { domain } = await this.prompt([
       {
         type: 'input',
-        name: 'uri',
-        message: 'What is your database uri (leave blank if no database)?',
+        name: 'domain',
+        message: 'What is your domain (ex: example.com)?',
         default: ''
       },
-    ]).then(({ vscode, domain, authentication, database, uri }) =>  {
-      this.vscode = vscode;
-      this.domain = domain;
-      this.authentication = authentication;
-      this.database = database;
-      this.uri = uri || 'my_uri' ;
-    });
+    ]);
+    this.domain = domain;
   }
 
   writing() {
     const locals = {
       ...this.names,
       domain: this.domain,
-      uri: this.uri,
+      uri: this.uri || 'my_uri',
       appName: '<%= appName %>',
       devSecret1: crypto.randomBytes(32).toString('hex'),
       prodSecret1: crypto.randomBytes(32).toString('hex'),
@@ -106,10 +130,6 @@ module.exports = class extends Generator {
       'tsconfig.json',
       'tslint.json',
     ];
-    if (this.vscode) {
-      paths.push('.vscode/launch.json');
-      paths.push('.vscode/tasks.json');
-    }
     for (let path of paths) {
       this.fs.copyTpl(
         this.templatePath(path),
