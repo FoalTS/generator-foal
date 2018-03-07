@@ -8,7 +8,7 @@
 </head>
 <body>
   <form action="/auth/local" method="post">
-    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
     <input type="email" name="email" required autofocus>
     <br>
     <input type="password" name="password" required>

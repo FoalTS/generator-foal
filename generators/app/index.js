@@ -105,6 +105,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
       authentication: this.authentication,
       domain: this.domain,
       uri: this.uri || 'my_uri',
+      csrfToken: '<%= csrfToken %>',
       appName: '<%= appName %>',
       devSecret1: crypto.randomBytes(32).toString('hex'),
       prodSecret1: crypto.randomBytes(32).toString('hex'),
