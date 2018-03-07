@@ -6,10 +6,11 @@ const { readFile } = require('../utils');
 
 function testWithName(name) {
   describe(`called with argument name=${name}`, () => {
+
     beforeEach(() => {
       return helpers.run(path.join(__dirname, '../../generators/pre-hook'))
         .withArguments([name]);
-    })
+    });
   
     it('should generate a pre-hook in file "foo-bar.pre-hook.ts".', async () => {
       assert.file(['foo-bar.pre-hook.ts']);
