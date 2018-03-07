@@ -1,11 +1,11 @@
 import { createEmptyContext, ServiceManager } from '@foal/core';
 
-import { <%= camelName %> } from './<%= kebabName %>.pre-hook';
+import { fooBar } from './foo-bar.pre-hook';
 
-describe('<%= camelName %>', () => {
+describe('fooBar', () => {
 
   it('should do something.', () => {
-    const preHook = <%= camelName %>();
+    const preHook = fooBar();
     const ctx = createEmptyContext();
 
     preHook(ctx, new ServiceManager());
