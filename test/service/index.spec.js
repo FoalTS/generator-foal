@@ -43,7 +43,7 @@ function testWithName(name) {
     testWithType(name, 'authenticator');
     // testWithType(name, 'model');
     testWithType(name, 'view');
-    // testWithType(name, 'multiple-views');
+    testWithType(name, 'multiple-views');
   
   });
 }
