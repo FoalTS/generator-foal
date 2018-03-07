@@ -79,7 +79,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
             message: 'Which authenticator do you want to use?',
             choices: [
               choice('Local authenticator (with email and password)', 'local-authenticator'),
-              choice('I\'ll create one on my own.', 'authenticator')
+              // choice('I\'ll create one on my own.', 'authenticator')
             ],
             default: 0
           }
@@ -102,6 +102,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
   writing() {
     const locals = {
       ...this.names,
+      authentication: this.authentication,
       domain: this.domain,
       uri: this.uri || 'my_uri',
       appName: '<%= appName %>',
@@ -130,6 +131,20 @@ Welcome to the FoalTS generator! The following questions will help you create yo
       'tsconfig.json',
       'tslint.json',
     ];
+    if (this.authentication) {
+      paths.push(
+        'src/app/auth/auth.module.ts',
+        'src/app/auth/authenticator.service.ts',
+        'src/app/auth/index.ts',
+        'src/app/auth/login-view.service.spec.ts',
+        'src/app/auth/login-view.service.ts',
+        'src/app/shared/connection.service.ts',
+        'src/app/shared/index.ts',
+        'src/app/shared/user.interface.ts',
+        'src/app/shared/user.service.ts',
+        'templates/login-view.html',
+      );
+    }
     for (let path of paths) {
       this.fs.copyTpl(
         this.templatePath(path),
@@ -159,7 +174,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
         break;
     }
     if (this.authentication) {
-      dbDependencies.push('@foal/authentication@0.4.0-alpha.3');
+      dbDependencies.push('@foal/authentication@0.4.0-alpha.3', 'bcrypt-nodejs');
     }
     if (dbDependencies.length !== 0) {
       this.npmInstall(dbDependencies, {}, () => {}, { cwd: this.names.kebabName });
