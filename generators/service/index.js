@@ -51,7 +51,8 @@ module.exports = class extends Generator {
         underscoreName: `${this.names.kebabName.replace(/-/g,'_')}`
       }, this.names)
     );
-    if (this.type !== 'local-authenticator' && this.type !== 'sequelize-model') {
+    if (this.type !== 'local-authenticator' && this.type !== 'sequelize-model'
+        && this.type !== 'sequelize-connection') {
       this.fs.copyTpl(
         this.templatePath(`${this.type}-service.spec.ts`),
         this.destinationPath(`${this.names.kebabName}.service.spec.ts`),

@@ -39,7 +39,7 @@ function testWithName(name) {
     testWithType(name, 'ejs-template');
     testWithType(name, 'multiple-ejs-templates');
     testWithType(name, 'sequelize-model', false);
-    // testWithType(name, 'sequelize-connection');
+    testWithType(name, 'sequelize-connection', false);
     // testWithType(name, 'authenticator');
     // testWithType(name, 'model');
     // testWithType(name, 'view');
