@@ -5,14 +5,12 @@ export interface Config extends ObjectType {
   app: {
     name: string;
   };
+  csrfProtection: boolean;
   db: {
     options: ObjectType;
     uri: string;
   };
-  errors: {
-    logs: logOptions;
-    sendStack: boolean;
-  };
+  debugMode: boolean;
   port: number;
   public: string;
   session: {

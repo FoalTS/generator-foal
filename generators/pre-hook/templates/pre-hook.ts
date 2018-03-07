@@ -1,7 +1,7 @@
-import { preHook } from '@foal/core';
+import { PreHook } from '@foal/core';
 
-export function <%= camelName %>() {
-  return preHook((ctx, services) => {
+export function <%= camelName %>(): PreHook {
+  return (ctx, services) => {
 
-  });
+  };
 }

@@ -1,14 +1,14 @@
-import { createEmptyContext, getPreMiddleware, ServiceManager } from '@foal/core';
-import { expect } from 'chai';
+import { createEmptyContext, ServiceManager } from '@foal/core';
 
 import { <%= camelName %> } from './<%= kebabName %>.pre-hook';
 
 describe('<%= camelName %>', () => {
 
   it('should do something.', () => {
-    const middleware = getPreMiddleware(<%= camelName %>());
+    const preHook = <%= camelName %>();
     const ctx = createEmptyContext();
 
-    middleware(ctx, new ServiceManager());
+    preHook(ctx, new ServiceManager());
   });
+
 });

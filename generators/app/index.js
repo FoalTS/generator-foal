@@ -26,24 +26,14 @@ module.exports = class extends Generator {
  /  /      / /__ / /  / /   | |   /  /____    / /     _____/ /
 /__/      /_______/  /_/    |_|  /_______/   /_/     /______/
 
+
+Welcome to the FoalTS generator! The following questions will help you create your app.
 `
     );
   }
 
-  prompting() {
-    return this.prompt([
-      {
-        type: 'confirm',
-        name: 'vscode',
-        message: 'Add default VSCode config files for debugging?',
-        default: true
-      },
-      {
-        type: 'input',
-        name: 'domain',
-        message: 'What is your domain (ex: example.com)?',
-        default: ''
-      },
+  async prompting() {
+    const { database } = await this.prompt([
       {
         type: 'list',
         name: 'database',
@@ -51,28 +41,71 @@ module.exports = class extends Generator {
         choices: [
           { name: 'None', value: null },
           { name: 'PostgreSQL', value: 'postgres' },
-          { name: 'MySQL', value: 'mysql' },
-        ]
+          // { name: 'MySQL', value: 'mysql' },
+        ],
+        default: 'postgres'
       },
+    ]);
+    if (database) {
+      this.database = database;
+
+      const { uri, authentication } = await this.prompt([
+        {
+          type: 'input',
+          name: 'uri',
+          message: 'What is your database uri?',
+          default: ''
+        },
+        {
+          type: 'confirm',
+          name: 'authentication',
+          message: 'Does your application need authentication?',
+          default: true
+        },
+      ]);
+
+      this.uri = uri;
+
+      if (authentication) {
+        this.authentication = authentication;
+
+        function choice(name, value = name) {
+          return { name, value };
+        }
+        const { authenticator } = await this.prompt([
+          {
+            type: 'list',
+            name: 'type',
+            message: 'Which authenticator do you want to use?',
+            choices: [
+              choice('Local authenticator (with email and password)', 'local-authenticator'),
+              // choice('I\'ll create one on my own.', 'authenticator')
+            ],
+            default: 0
+          }
+        ]);
+        
+        this.authenticator =  authenticator;
+      }
+    }
+    const { domain } = await this.prompt([
       {
         type: 'input',
-        name: 'uri',
-        message: 'What is your database uri (leave blank if no database)?',
+        name: 'domain',
+        message: 'What is your domain (ex: example.com)?',
         default: ''
       },
-    ]).then(({ vscode, domain, database, uri }) =>  {
-      this.vscode = vscode;
-      this.domain = domain;
-      this.database = database;
-      this.uri = uri || 'my_uri' ;
-    });
+    ]);
+    this.domain = domain;
   }
 
   writing() {
     const locals = {
       ...this.names,
+      authentication: this.authentication,
       domain: this.domain,
-      uri: this.uri,
+      uri: this.uri || 'my_uri',
+      csrfToken: '<%= csrfToken %>',
       appName: '<%= appName %>',
       devSecret1: crypto.randomBytes(32).toString('hex'),
       prodSecret1: crypto.randomBytes(32).toString('hex'),
@@ -99,9 +132,19 @@ module.exports = class extends Generator {
       'tsconfig.json',
       'tslint.json',
     ];
-    if (this.vscode) {
-      paths.push('.vscode/launch.json');
-      paths.push('.vscode/tasks.json');
+    if (this.authentication) {
+      paths.push(
+        'src/app/auth/auth.module.ts',
+        'src/app/auth/authenticator.service.ts',
+        'src/app/auth/index.ts',
+        'src/app/auth/login-view.service.spec.ts',
+        'src/app/auth/login-view.service.ts',
+        'src/app/shared/connection.service.ts',
+        'src/app/shared/index.ts',
+        'src/app/shared/user.interface.ts',
+        'src/app/shared/user.service.ts',
+        'templates/login-view.html',
+      );
     }
     for (let path of paths) {
       this.fs.copyTpl(
@@ -125,11 +168,14 @@ module.exports = class extends Generator {
     let dbDependencies = [];
     switch(this.database) {
       case 'postgres':
-        dbDependencies = [ '@foal/sequelize@0.4.0-alpha.3', 'pg@6', 'pg-hstore' ];
+        dbDependencies.push('@foal/sequelize@0.4.0-alpha.3', 'pg@6', 'pg-hstore');
         break;
       case 'mysql':
-        dbDependencies = [ '@foal/sequelize@0.4.0-alpha.3', 'mysql2' ];
+        dbDependencies.push('@foal/sequelize@0.4.0-alpha.3', 'mysql2');
         break;
+    }
+    if (this.authentication) {
+      dbDependencies.push('@foal/authentication@0.4.0-alpha.3', 'bcrypt-nodejs');
     }
     if (dbDependencies.length !== 0) {
       this.npmInstall(dbDependencies, {}, () => {}, { cwd: this.names.kebabName });

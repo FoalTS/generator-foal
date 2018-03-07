@@ -6,14 +6,12 @@ export const config: Config = {
   app: {
     name: '<%= kebabName %>'
   },
+  csrfProtection: true,
   db: {
     options: {},
     uri: process.env.DB_URI || 'my_uri',
   },
-  errors: {
-    logs: '500' as logOptions,
-    sendStack: false
-  },
+  debugMode: false,
   port: toNumber(process.env.PORT || '3000'),
   public: '../public/',
   session: {

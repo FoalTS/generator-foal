@@ -1,5 +1,5 @@
-import { FoalModule } from '@foal/core';
+import { Module } from '@foal/core';
 
-export const <%= CamelName %>Module: FoalModule = {
+export const <%= CamelName %>Module: Module = {
   controllers: [],
 };
