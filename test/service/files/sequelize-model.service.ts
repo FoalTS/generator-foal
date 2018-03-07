@@ -4,9 +4,9 @@ import { SequelizeModelService } from '@foal/sequelize';
 import { ConnectionService } from './connection.service';
 
 @Service()
-export class <%= CamelName %>Service extends SequelizeModelService<any> {
+export class FooBarService extends SequelizeModelService<any> {
   constructor(connection: ConnectionService) {
-    super('<%= underscoreName %>s', {
+    super('foo_bars', {
       // Schema
     }, connection);
   }
