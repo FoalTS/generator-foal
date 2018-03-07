@@ -1,11 +1,11 @@
 import { createEmptyPostContext, ServiceManager } from '@foal/core';
 
-import { <%= camelName %> } from './<%= kebabName %>.post-hook';
+import { fooBar } from './foo-bar.post-hook';
 
-describe('<%= camelName %>', () => {
+describe('fooBar', () => {
 
   it('should do something.', () => {
-    const postHook = <%= camelName %>();
+    const postHook = fooBar();
     const ctx = createEmptyPostContext();
 
     postHook(ctx, new ServiceManager());
