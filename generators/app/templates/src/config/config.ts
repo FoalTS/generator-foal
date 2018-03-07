@@ -5,6 +5,7 @@ export interface Config extends ObjectType {
   app: {
     name: string;
   };
+  csrfProtection: boolean;
   db: {
     options: ObjectType;
     uri: string;

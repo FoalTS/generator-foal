@@ -6,6 +6,7 @@ export const config: Config = {
   app: {
     name: '<%= kebabName %> (test)'
   },
+  csrfProtection: false,
   db: {
     options: {},
     uri: process.env.DB_URI || '<%= uri %>',
