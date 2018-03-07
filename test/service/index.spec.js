@@ -41,7 +41,6 @@ function testWithName(name) {
     testWithType(name, 'sequelize-model', false);
     testWithType(name, 'sequelize-connection', false);
     testWithType(name, 'authenticator');
-    // testWithType(name, 'model');
     testWithType(name, 'view');
     testWithType(name, 'multiple-views');
   
