@@ -2,10 +2,10 @@ import { Service } from '@foal/core';
 import { MultipleEjsTemplatesService } from '@foal/ejs';
 
 @Service()
-export class <%= CamelName %>Service extends MultipleEjsTemplatesService {
+export class FooBarService extends MultipleEjsTemplatesService {
   constructor() {
     super({
-      view1: './templates/<%= kebabName %>.html'
+      view1: './templates/foo-bar.html'
     });
   }
 }

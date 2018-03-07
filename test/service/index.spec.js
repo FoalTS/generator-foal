@@ -37,7 +37,7 @@ function testWithName(name) {
     testWithType(name, 'empty');
     testWithType(name, 'local-authenticator', false);
     testWithType(name, 'ejs-template');
-    // testWithType(name, 'multiple-ejs-templates');
+    testWithType(name, 'multiple-ejs-templates');
     // testWithType(name, 'sequelize-model');
     // testWithType(name, 'sequelize-connection');
     // testWithType(name, 'authenticator');
