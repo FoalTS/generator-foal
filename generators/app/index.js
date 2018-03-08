@@ -168,14 +168,14 @@ Welcome to the FoalTS generator! The following questions will help you create yo
     let dbDependencies = [];
     switch(this.database) {
       case 'postgres':
-        dbDependencies.push('@foal/sequelize@0.4.0-alpha.3', 'pg@6', 'pg-hstore');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.1', 'pg@6', 'pg-hstore');
         break;
       case 'mysql':
-        dbDependencies.push('@foal/sequelize@0.4.0-alpha.3', 'mysql2');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.1', 'mysql2');
         break;
     }
     if (this.authentication) {
-      dbDependencies.push('@foal/authentication@0.4.0-alpha.3', 'bcrypt-nodejs');
+      dbDependencies.push('@foal/authentication@0.4.0-beta.1', 'bcrypt-nodejs');
     }
     if (dbDependencies.length !== 0) {
       this.npmInstall(dbDependencies, {}, () => {}, { cwd: this.names.kebabName });

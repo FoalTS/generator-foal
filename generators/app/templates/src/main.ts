@@ -3,9 +3,9 @@ import { getMiddlewares } from '@foal/express';
 import * as bodyParser from 'body-parser';
 import * as csurf from 'csurf';
 import * as express from 'express';
-import * as logger from 'morgan';
 import * as session from 'express-session';
 import * as helmet from 'helmet';
+import * as logger from 'morgan';
 import * as path from 'path';
 
 import { AppModule } from './app/app.module';
@@ -26,11 +26,15 @@ if (config.csrfProtection) {
   app.use(csurf());
   app.use((req, res, next) => {
     req.csrfToken = req.csrfToken();
-    if (req.body) {
-      delete req.body._csrf;
-    }
+    next();
   });
 }
+app.use((req, res, next) => {
+  if (req.body) {
+    delete req.body._csrf;
+  }
+  next();
+})
 
 app.use(session(config.session));
 

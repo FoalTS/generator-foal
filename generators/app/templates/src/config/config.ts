@@ -1,5 +1,4 @@
 import { ObjectType } from '@foal/core';
-import { logOptions } from '@foal/express';
 
 export interface Config extends ObjectType {
   app: {

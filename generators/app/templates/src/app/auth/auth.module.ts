@@ -29,7 +29,7 @@ export const AuthModule: Module = {
       }),
     view
       .attachService('/', LoginViewService)
-      .withPreHook(ctx => { ctx.state.locals = { csrfToken: ctx.state.csrfToken } })
+      .withPreHook(ctx => { ctx.state.locals = { csrfToken: ctx.state.csrfToken }; })
   ],
   path: '/auth',
 };
