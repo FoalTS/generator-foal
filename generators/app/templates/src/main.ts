@@ -26,11 +26,15 @@ if (config.csrfProtection) {
   app.use(csurf());
   app.use((req, res, next) => {
     req.csrfToken = req.csrfToken();
-    if (req.body) {
-      delete req.body._csrf;
-    }
+    next();
   });
 }
+app.use((req, res, next) => {
+  if (req.body) {
+    delete req.body._csrf;
+  }
+  next();
+})
 
 app.use(session(config.session));
 
