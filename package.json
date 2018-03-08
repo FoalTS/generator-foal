@@ -1,13 +1,13 @@
 {
   "name": "generator-foal",
-  "version": "0.4.0-alpha.6",
+  "version": "0.4.0-beta.0",
   "description": "Yeoman generators to quickly start a project and create components (services, controllers, etc.)",
   "files": [
     "generators"
   ],
   "scripts": {
-    "test": "mocha \"./generators/**/*.spec.js\"",
-    "dev-test": "mocha -w \"./generators/**/*.spec.js\""
+    "test": "mocha \"./test/**/*.spec.js\"",
+    "dev:test": "mocha -w --watch-extensions ts,js \"./test/**/*.spec.js\""
   },
   "keywords": [
     "yeoman-generator",
@@ -19,6 +19,7 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
+    "yeoman-assert": "^3.1.0",
     "yeoman-generator": "^1.1.1"
   },
   "repository": {

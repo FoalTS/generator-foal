@@ -18,15 +18,29 @@ module.exports = class extends Generator {
   }
   
   prompting() {
+    function choice(name, value = name) {
+      return { name, value };
+    }
     return this.prompt([
       {
         type: 'list',
         name: 'type',
         message: 'Type',
-        choices: [ 'None', 'CRUD', 'Partial CRUD', 'Sequelize', 'Sequelize connection', 'View' ],
+        choices: [
+          choice('Empty', 'empty'),
+          choice('[Authenticator] Local authenticator (with email and password)', 'local-authenticator'),
+          choice('[View] Single EJS template', 'ejs-template'),
+          choice('[MultipleViews] Multiple EJS templates', 'multiple-ejs-templates'),
+          choice('[Model] Sequelize model (PostgreSQL)', 'sequelize-model'),
+          choice('Sequelize connection (PostgreSQL)', 'sequelize-connection'),
+          choice('Authenticator (to implement)', 'authenticator'),
+          choice('Model (to implement)', 'model'),
+          choice('View (to implement)', 'view'),
+          choice('Multiple views (to implement)', 'multiple-views'),
+        ],
         default: 0
       }
-    ]).then(({ type }) => this.type = type.toLowerCase().replace(' ', '-'));
+    ]).then(({ type }) => this.type = type);
   }
 
   writing() {
@@ -37,10 +51,13 @@ module.exports = class extends Generator {
         underscoreName: `${this.names.kebabName.replace(/-/g,'_')}`
       }, this.names)
     );
-    this.fs.copyTpl(
-      this.templatePath(`${this.type}-service.spec.ts`),
-      this.destinationPath(`${this.names.kebabName}.service.spec.ts`),
-      this.names
-    );
+    if (this.type !== 'local-authenticator' && this.type !== 'sequelize-model'
+        && this.type !== 'sequelize-connection') {
+      this.fs.copyTpl(
+        this.templatePath(`${this.type}-service.spec.ts`),
+        this.destinationPath(`${this.names.kebabName}.service.spec.ts`),
+        this.names
+      );
+    }
   }
 };

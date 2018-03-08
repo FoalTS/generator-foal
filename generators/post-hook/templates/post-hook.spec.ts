@@ -1,14 +1,14 @@
-import { createEmptyContext, getPostMiddleware, ServiceManager } from '@foal/core';
-import { expect } from 'chai';
+import { createEmptyPostContext, ServiceManager } from '@foal/core';
 
 import { <%= camelName %> } from './<%= kebabName %>.post-hook';
 
 describe('<%= camelName %>', () => {
 
   it('should do something.', () => {
-    const middleware = getPostMiddleware(<%= camelName %>());
-    const ctx = createEmptyContext();
+    const postHook = <%= camelName %>();
+    const ctx = createEmptyPostContext();
 
-    middleware(ctx, new ServiceManager());
+    postHook(ctx, new ServiceManager());
   });
+
 });

@@ -1,17 +1,16 @@
+import { expect } from 'chai';
+
 import { <%= CamelName %>Service } from './<%= kebabName %>.service';
 
 describe('<%= CamelName %>Service', () => {
 
-  let service: <%= CamelName %>Service;
+  describe('when render is called', () => {
 
-  it('should instantiate.', () => {
-    service = new <%= CamelName %>Service();
-  });
+    it('should return the expected string.', async () => {
+      const service = new <%= CamelName %>Service();
+      const actual = await service.render({});
 
-  describe('when render(locals: ObjectType): string is called', () => {
-
-    it('should do something.', () => {
-
+      expect(actual).to.equal('');
     });
 
   });

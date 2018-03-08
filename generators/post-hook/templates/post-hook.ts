@@ -1,7 +1,7 @@
-import { postHook } from '@foal/core';
+import { PostHook } from '@foal/core';
 
-export function <%= camelName %>() {
-  return postHook((ctx, services) => {
+export function <%= camelName %>(): PostHook {
+  return (ctx, services) => {
 
-  });
+  };
 }

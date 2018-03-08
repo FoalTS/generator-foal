@@ -1,79 +1,31 @@
-import { logOptions } from '@foal/express';
+import { ObjectType } from '@foal/core';
 
-const env = process.env.NODE_ENV || 'development';
+export interface Config extends ObjectType {
+  app: {
+    name: string;
+  };
+  csrfProtection: boolean;
+  db: {
+    options: ObjectType;
+    uri: string;
+  };
+  debugMode: boolean;
+  port: number;
+  public: string;
+  session: {
+    resave: boolean;
+    saveUninitialized: boolean;
+    secret: string;
+    [name: string]: any;
+  };
+}
 
-const configs = {
-  development: {
-    app: {
-      name: '<%= kebabName %> (dev)'
-    },
-    db: {
-      options: {},
-      uri: process.env.DB_URI || '<%= uri %>',
-    },
-    errors: {
-      logs: '500' as logOptions,
-      sendStack: true
-    },
-    port: process.env.PORT || 3000,
-    public: '../public/',
-    session: {
-      resave: false,
-      saveUninitialized: false,
-      secret: '<%= devSecret1 %>'
-        + '<%= devSecret2 %>',
-    },
-  },
-  production: {
-    app: {
-      name: '<%= kebabName %>'
-    },
-    db: {
-      options: {},
-      uri:  process.env.DB_URI || 'my_uri',
-    },
-    errors: {
-      logErrors: '500' as logOptions,
-      sendStack: false
-    },
-    port: process.env.PORT || 3000,
-    public: '../public/',
-    session: {
-      cookie: {<% if (domain) { %>
-        domain: '<%= domain %>',<% } %>
-        httpOnly: true,
-        maxAge: 60 * 60 * 1000, // 1 hour
-        path: '/',
-        secure: true,
-      },
-      name: 'sessionId',
-      resave: false,
-      saveUninitialized: false,
-      secret: '<%= prodSecret1 %>'
-        + '<%= prodSecret2 %>',
-    },
-  },
-  test: {
-    app: {
-      name: '<%= kebabName %> (test)'
-    },
-    db: {
-      options: {},
-      uri: process.env.DB_URI || '<%= uri %>',
-    },
-    errors: {
-      logErrors: 'none' as logOptions,
-      sendStack: true
-    },
-    port: process.env.PORT || 3000,
-    public: '../public/',
-    session: {
-      resave: false,
-      saveUninitialized: false,
-      secret: '<%= testSecret1 %>'
-        + '<%= testSecret2 %>',
-    },
+export function toNumber(str: string): number {
+  const result = parseInt(str, 10);
+
+  if (isNaN(result)) {
+    throw new Error(`${str} cannot be converted to a number.`);
   }
-};
 
-export const config = configs[env];
+  return result;
+}
