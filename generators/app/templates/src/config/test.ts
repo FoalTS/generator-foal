@@ -1,5 +1,3 @@
-import { logOptions } from '@foal/express';
-
 import { Config, toNumber } from './config';
 
 export const config: Config = {
