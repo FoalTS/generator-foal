@@ -9,7 +9,7 @@ export const AppModule: Module = {
   controllers: [
     view
       .attachService('/', IndexViewService)
-      .withPreHook(ctx => { ctx.state.locals = { appName: config.app.name; } })
+      .withPreHook(ctx => { ctx.state.locals = { appName: config.app.name }; })
   ],
   modules: [
     <% if (authentication) { %>AuthModule<% } %>
