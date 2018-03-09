@@ -18,7 +18,7 @@ export const config: Config = {
       httpOnly: true,
       maxAge: 60 * 60 * 1000, // 1 hour
       path: '/',
-      secure: true,
+      secure: false, // It should be true if you are using https.
     },
     name: 'sessionId',
     resave: false,
