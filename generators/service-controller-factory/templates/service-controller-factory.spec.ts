@@ -6,15 +6,15 @@ import {
 } from '@foal/core';
 import { expect } from 'chai';
 
-import { I<%= CamelName %> } from './<%= kebabName %>.service';
 import { <%= camelName %>, <%= CamelName %>ControllerFactory } from './<%= kebabName %>.controller-factory';
+import { I<%= CamelName %> } from './<%= kebabName %>.service';
 
 describe('<%= camelName %>', () => {
 
   @Service()
   class MockService implements I<%= CamelName %> {
     constructor() {}
-    
+
     // ...
   }
 
@@ -32,7 +32,7 @@ describe('<%= camelName %>', () => {
       expect(actual.path).to.equal('/');
 
       const ctx = createEmptyContext();
-      let result = actual.handler(ctx, new ServiceManager());
+      const result = actual.handler(ctx, new ServiceManager());
       expect(result).to.be.an.instanceOf(HttpResponseOK);
     });
 

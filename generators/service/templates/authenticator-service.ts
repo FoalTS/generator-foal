@@ -1,7 +1,7 @@
 import { IAuthenticator } from '@foal/authentication';
 import { Service } from '@foal/core';
 
-import { User } from 'somewhere'
+import { User } from 'somewhere';
 
 @Service()
 export class <%= CamelName %>Service implements IAuthenticator<User> {

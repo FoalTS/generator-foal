@@ -7,7 +7,8 @@
   <title>Login</title>
 </head>
 <body>
-  <form action="/auth/local" method="post">
+  <form action="/auth/local" method="post"><% if (invalidCredentials) { %>
+    <strong>Invalid credentials.</strong><% } %>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
     <input type="email" name="email" required autofocus>
     <br>

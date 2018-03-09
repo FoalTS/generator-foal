@@ -6,15 +6,15 @@ import {
 } from '@foal/core';
 import { expect } from 'chai';
 
-import { IFooBar } from './foo-bar.service';
 import { fooBar, FooBarControllerFactory } from './foo-bar.controller-factory';
+import { IFooBar } from './foo-bar.service';
 
 describe('fooBar', () => {
 
   @Service()
   class MockService implements IFooBar {
     constructor() {}
-    
+
     // ...
   }
 
@@ -32,7 +32,7 @@ describe('fooBar', () => {
       expect(actual.path).to.equal('/');
 
       const ctx = createEmptyContext();
-      let result = actual.handler(ctx, new ServiceManager());
+      const result = actual.handler(ctx, new ServiceManager());
       expect(result).to.be.an.instanceOf(HttpResponseOK);
     });
 

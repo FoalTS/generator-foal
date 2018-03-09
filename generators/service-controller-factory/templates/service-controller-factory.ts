@@ -1,4 +1,4 @@
-import { Controller, Class, HttpReponseOK, ServiceControllerFactory } from '@foal/core';
+import { Class, Controller, HttpReponseOK, ServiceControllerFactory } from '@foal/core';
 
 import { I<%= CamelName %> } from './<%= kebabName %>.interface';
 
