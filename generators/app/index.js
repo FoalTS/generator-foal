@@ -40,10 +40,11 @@ Welcome to the FoalTS generator! The following questions will help you create yo
         message: 'Which database are you connecting to?',
         choices: [
           { name: 'None', value: null },
+          { name: 'SQLite', value: 'sqlite' },
           { name: 'PostgreSQL', value: 'postgres' },
           // { name: 'MySQL', value: 'mysql' },
         ],
-        default: 'postgres'
+        default: 'sqlite'
       },
     ]);
     if (database) {
@@ -54,7 +55,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
           type: 'input',
           name: 'uri',
           message: 'What is your database uri?',
-          default: ''
+          default: database === 'sqlite' ? 'sqlite://database.db' : ''
         },
         {
           type: 'confirm',
@@ -167,6 +168,9 @@ Welcome to the FoalTS generator! The following questions will help you create yo
   install() {
     let dbDependencies = [];
     switch(this.database) {
+      case 'sqlite':
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.1', 'sqlite3');
+        break;
       case 'postgres':
         dbDependencies.push('@foal/sequelize@0.4.0-beta.1', 'pg@6', 'pg-hstore');
         break;
