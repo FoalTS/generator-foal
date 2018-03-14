@@ -117,6 +117,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
     }
     const paths = [
       'src/app/app.module.ts',
+      'src/app/app.ts',
       'src/app/index-view.service.spec.ts',
       'src/app/index-view.service.ts',
       'src/config/config.ts',
