@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "build": "tsc",
+    "shell": "cd dist/app && node -e \"const { app } = require('./app')\" -i",
     "test": "mocha -r source-map-support/register \"./dist/**/*.spec.js\"",
     "start": "node server.js",
     "dev:app": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"nodemon -e js server.js\"",
@@ -27,5 +28,8 @@
     "@foal/ejs": "^0.4.0-beta.1",
     "@foal/express": "^0.4.0-beta.1",
     "source-map-support": "^0.5.1"
+  },
+  "devDependencies": {
+    "ts-node": "^5.0.1"
   }
 }
