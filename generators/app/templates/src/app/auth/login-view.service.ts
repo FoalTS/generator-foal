@@ -4,6 +4,6 @@ import { EjsTemplateService } from '@foal/ejs';
 @Service()
 export class LoginViewService extends EjsTemplateService {
   constructor() {
-    super('./templates/login-view.html');
+    super(__dirname + '/templates/login-view.html');
   }
 }
