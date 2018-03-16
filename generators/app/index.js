@@ -129,6 +129,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
 
       'templates/index.html',
 
+      'gulpfile.js',
       'package.json',
       'server.js',
       'tsconfig.json',
@@ -188,12 +189,10 @@ Welcome to the FoalTS generator! The following questions will help you create yo
     this.npmInstall([], {}, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'concurrently',
-      'nodemon',
       'mocha',
       'chai',
       '@types/mocha',
       '@types/chai',
-      'typescript',
       'tslint'
     ], { 'save-dev': true }, () => {}, { cwd: this.names.kebabName });
   }
