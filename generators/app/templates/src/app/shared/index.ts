@@ -1,3 +1,3 @@
-export { ConnectionService } from './connection.service';
+export { ConnectionService } from './connection.service';<% if (authentication) { %>
 export { User } from './user.interface';
-export { UserService } from './user.service';
+export { UserService } from './user.service';<% } %>
