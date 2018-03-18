@@ -40,10 +40,11 @@ Welcome to the FoalTS generator! The following questions will help you create yo
         message: 'Which database are you connecting to?',
         choices: [
           { name: 'None', value: null },
+          { name: 'SQLite', value: 'sqlite' },
           { name: 'PostgreSQL', value: 'postgres' },
           // { name: 'MySQL', value: 'mysql' },
         ],
-        default: 'postgres'
+        default: 'sqlite'
       },
     ]);
     if (database) {
@@ -54,7 +55,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
           type: 'input',
           name: 'uri',
           message: 'What is your database uri?',
-          default: ''
+          default: database === 'sqlite' ? 'sqlite://db.sqlite3' : ''
         },
         {
           type: 'confirm',
@@ -115,7 +116,9 @@ Welcome to the FoalTS generator! The following questions will help you create yo
       testSecret2: crypto.randomBytes(32).toString('hex'),
     }
     const paths = [
+      'src/app/templates/index.html',
       'src/app/app.module.ts',
+      'src/app/app.ts',
       'src/app/index-view.service.spec.ts',
       'src/app/index-view.service.ts',
       'src/config/config.ts',
@@ -125,25 +128,32 @@ Welcome to the FoalTS generator! The following questions will help you create yo
       'src/config/test.ts',
       'src/main.ts',
 
-      'templates/index.html',
-
+      'gulpfile.js',
       'package.json',
       'server.js',
       'tsconfig.json',
       'tslint.json',
     ];
+    if (this.database) {
+      paths.push(
+        'src/app/shared/connection.service.ts',
+        'src/app/shared/connection.service.spec.ts',
+        'src/app/shared/index.ts',
+      )
+    }
     if (this.authentication) {
+      this.fs.copy(
+        this.templatePath('src/app/auth/templates/login-view.html'),
+        this.destinationPath(`${this.names.kebabName}/src/app/auth/templates/login-view.html`)
+      )
       paths.push(
         'src/app/auth/auth.module.ts',
         'src/app/auth/authenticator.service.ts',
         'src/app/auth/index.ts',
         'src/app/auth/login-view.service.spec.ts',
         'src/app/auth/login-view.service.ts',
-        'src/app/shared/connection.service.ts',
-        'src/app/shared/index.ts',
         'src/app/shared/user.interface.ts',
         'src/app/shared/user.service.ts',
-        'templates/login-view.html',
       );
     }
     for (let path of paths) {
@@ -167,15 +177,18 @@ Welcome to the FoalTS generator! The following questions will help you create yo
   install() {
     let dbDependencies = [];
     switch(this.database) {
+      case 'sqlite':
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'sqlite3');
+        break;
       case 'postgres':
-        dbDependencies.push('@foal/sequelize@0.4.0-beta.1', 'pg@6', 'pg-hstore');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'pg@6', 'pg-hstore');
         break;
       case 'mysql':
-        dbDependencies.push('@foal/sequelize@0.4.0-beta.1', 'mysql2');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'mysql2');
         break;
     }
     if (this.authentication) {
-      dbDependencies.push('@foal/authentication@0.4.0-beta.1', 'bcrypt-nodejs');
+      dbDependencies.push('@foal/authentication@0.4.0-beta.2', 'bcrypt-nodejs');
     }
     if (dbDependencies.length !== 0) {
       this.npmInstall(dbDependencies, {}, () => {}, { cwd: this.names.kebabName });
@@ -183,12 +196,10 @@ Welcome to the FoalTS generator! The following questions will help you create yo
     this.npmInstall([], {}, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'concurrently',
-      'nodemon',
       'mocha',
       'chai',
       '@types/mocha',
       '@types/chai',
-      'typescript',
       'tslint'
     ], { 'save-dev': true }, () => {}, { cwd: this.names.kebabName });
   }

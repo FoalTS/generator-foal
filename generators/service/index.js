@@ -31,8 +31,8 @@ module.exports = class extends Generator {
           choice('[Authenticator] Local authenticator (with email and password)', 'local-authenticator'),
           choice('[View] Single EJS template', 'ejs-template'),
           choice('[MultipleViews] Multiple EJS templates', 'multiple-ejs-templates'),
-          choice('[Model] Sequelize model (PostgreSQL)', 'sequelize-model'),
-          choice('Sequelize connection (PostgreSQL)', 'sequelize-connection'),
+          choice('[Model] Sequelize model (PostgreSQL, SQLite)', 'sequelize-model'),
+          choice('Sequelize connection (PostgreSQL, SQLite)', 'sequelize-connection'),
           choice('Authenticator (to implement)', 'authenticator'),
           // choice('Model (to implement)', 'model'),
           choice('View (to implement)', 'view'),
@@ -51,8 +51,7 @@ module.exports = class extends Generator {
         underscoreName: `${this.names.kebabName.replace(/-/g,'_')}`
       }, this.names)
     );
-    if (this.type !== 'local-authenticator' && this.type !== 'sequelize-model'
-        && this.type !== 'sequelize-connection') {
+    if (this.type !== 'local-authenticator' && this.type !== 'sequelize-model') {
       this.fs.copyTpl(
         this.templatePath(`${this.type}-service.spec.ts`),
         this.destinationPath(`${this.names.kebabName}.service.spec.ts`),
