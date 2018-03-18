@@ -133,6 +133,12 @@ Welcome to the FoalTS generator! The following questions will help you create yo
       'tsconfig.json',
       'tslint.json',
     ];
+    if (this.database) {
+      paths.push(
+        'src/app/shared/connection.service.ts',
+        'src/app/shared/index.ts',
+      )
+    }
     if (this.authentication) {
       paths.push(
         'src/app/auth/auth.module.ts',
@@ -140,8 +146,6 @@ Welcome to the FoalTS generator! The following questions will help you create yo
         'src/app/auth/index.ts',
         'src/app/auth/login-view.service.spec.ts',
         'src/app/auth/login-view.service.ts',
-        'src/app/shared/connection.service.ts',
-        'src/app/shared/index.ts',
         'src/app/shared/user.interface.ts',
         'src/app/shared/user.service.ts',
         'templates/login-view.html',
