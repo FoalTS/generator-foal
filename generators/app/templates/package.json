@@ -4,10 +4,11 @@
   "description": "",
   "scripts": {
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "build": "tsc",
+    "build": "gulp clean && gulp build",
+    "shell": "cd dist/app && node -e \"const { app } = require('./app')\" -i",
     "test": "mocha -r source-map-support/register \"./dist/**/*.spec.js\"",
     "start": "node server.js",
-    "dev:app": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"nodemon -e js server.js\"",
+    "dev:app": "gulp clean && gulp dev:app",
     "dev:test": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"mocha -r source-map-support/register -w \"./dist/**/*.spec.js\"\""
   },
   "engines": {
@@ -27,5 +28,13 @@
     "@foal/ejs": "^0.4.0-beta.1",
     "@foal/express": "^0.4.0-beta.1",
     "source-map-support": "^0.5.1"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "typescript": "^2.7.2",
+    "gulp-typescript": "^4.0.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sourcemaps": "^2.6.4"
   }
 }

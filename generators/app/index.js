@@ -55,7 +55,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
           type: 'input',
           name: 'uri',
           message: 'What is your database uri?',
-          default: database === 'sqlite' ? 'sqlite://database.db' : ''
+          default: database === 'sqlite' ? 'sqlite://db.sqlite3' : ''
         },
         {
           type: 'confirm',
@@ -116,7 +116,9 @@ Welcome to the FoalTS generator! The following questions will help you create yo
       testSecret2: crypto.randomBytes(32).toString('hex'),
     }
     const paths = [
+      'src/app/templates/index.html',
       'src/app/app.module.ts',
+      'src/app/app.ts',
       'src/app/index-view.service.spec.ts',
       'src/app/index-view.service.ts',
       'src/config/config.ts',
@@ -126,8 +128,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
       'src/config/test.ts',
       'src/main.ts',
 
-      'templates/index.html',
-
+      'gulpfile.js',
       'package.json',
       'server.js',
       'tsconfig.json',
@@ -141,6 +142,10 @@ Welcome to the FoalTS generator! The following questions will help you create yo
       )
     }
     if (this.authentication) {
+      this.fs.copy(
+        this.templatePath('src/app/auth/templates/login-view.html'),
+        this.destinationPath(`${this.names.kebabName}/src/app/auth/templates/login-view.html`)
+      )
       paths.push(
         'src/app/auth/auth.module.ts',
         'src/app/auth/authenticator.service.ts',
@@ -149,7 +154,6 @@ Welcome to the FoalTS generator! The following questions will help you create yo
         'src/app/auth/login-view.service.ts',
         'src/app/shared/user.interface.ts',
         'src/app/shared/user.service.ts',
-        'templates/login-view.html',
       );
     }
     for (let path of paths) {
@@ -192,12 +196,10 @@ Welcome to the FoalTS generator! The following questions will help you create yo
     this.npmInstall([], {}, () => {}, { cwd: this.names.kebabName });
     this.npmInstall([
       'concurrently',
-      'nodemon',
       'mocha',
       'chai',
       '@types/mocha',
       '@types/chai',
-      'typescript',
       'tslint'
     ], { 'save-dev': true }, () => {}, { cwd: this.names.kebabName });
   }

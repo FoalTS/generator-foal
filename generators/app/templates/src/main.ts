@@ -1,4 +1,3 @@
-import { App } from '@foal/core';
 import { getMiddlewares } from '@foal/express';
 import * as bodyParser from 'body-parser';
 import * as csurf from 'csurf';
@@ -8,10 +7,8 @@ import * as helmet from 'helmet';
 import * as logger from 'morgan';
 import * as path from 'path';
 
-import { AppModule } from './app/app.module';
+import { app as foal } from './app/app';
 import { config } from './config';
-
-const foal = new App(AppModule);
 
 const app = express();
 
