@@ -136,6 +136,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
     if (this.database) {
       paths.push(
         'src/app/shared/connection.service.ts',
+        'src/app/shared/connection.service.spec.ts',
         'src/app/shared/index.ts',
       )
     }
