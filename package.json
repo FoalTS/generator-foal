@@ -1,6 +1,6 @@
 {
   "name": "generator-foal",
-  "version": "0.4.0-beta.2",
+  "version": "0.4.0-beta.3",
   "description": "Yeoman generators to quickly start a project and create components (services, controllers, etc.)",
   "files": [
     "generators"
@@ -20,7 +20,8 @@
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "yeoman-assert": "^3.1.0",
-    "yeoman-generator": "^1.1.1"
+    "yeoman-generator": "^1.1.1",
+    "bootstrap": "^4.0.0"
   },
   "repository": {
     "type": "git",

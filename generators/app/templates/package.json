@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "build": "gulp clean && gulp build",
-    "shell": "cd dist/app && node -e \"const { app } = require('./app')\" -i",
+    "shell": "node -e \"const { app } = require('./dist/app/app')\" -i",
     "test": "mocha -r source-map-support/register \"./dist/**/*.spec.js\"",
     "start": "node server.js",
     "dev:app": "gulp clean && gulp dev:app",
