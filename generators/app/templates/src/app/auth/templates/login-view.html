@@ -5,15 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Login</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f5f5f5;
+      padding-top: 40px;
+    }
+    form {
+      margin: auto;
+      max-width: 400px;
+    }
+  </style>
 </head>
 <body>
-  <form action="/auth/local" method="post"><% if (invalidCredentials) { %>
-    <strong>Invalid credentials.</strong><% } %>
+  <form class="text-center" action="/auth/local" method="post">
+    <h1 class="h3 mb-4">Log in</h1><% if (invalidCredentials) { %>
+    <div class="alert alert-danger">
+      <strong>Invalid credentials.</strong>
+    </div><% } %>
     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
-    <input type="email" name="email" required autofocus>
+    <input class="form-control" type="email" name="email" placeholder="Email adress" required autofocus>
     <br>
-    <input type="password" name="password" required>
-    <button type="submit">Log in</button>
+    <input class="form-control mb-3" type="password" name="password" placeholder="Password" required>
+    <button class="btn btn-primary btn-block" type="submit">Log in</button>
   </form>
 </body>
 </html>

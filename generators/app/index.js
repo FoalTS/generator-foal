@@ -171,7 +171,11 @@ Welcome to the FoalTS generator! The following questions will help you create yo
     this.fs.copy(
       this.templatePath('public/logo.png'),
       this.destinationPath(`${this.names.kebabName}/public/logo.png`),
-    )
+    );
+    this.fs.copy(
+      this.templatePath('../../../node_modules/bootstrap/dist/css/bootstrap.min.css'),
+      this.destinationPath(`${this.names.kebabName}/public/bootstrap.min.css`),
+    );
   }
 
   install() {
