@@ -79,7 +79,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
             name: 'type',
             message: 'Which authenticator do you want to use?',
             choices: [
-              choice('Local authenticator (with email and password)', 'local-authenticator'),
+              choice('Email authenticator', 'email-authenticator'),
               // choice('I\'ll create one on my own.', 'authenticator')
             ],
             default: 0
