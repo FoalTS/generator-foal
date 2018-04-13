@@ -1,4 +1,4 @@
-import { authentication, validateLocalCredentialsFormat } from '@foal/authentication';
+import { authentication, validateEmailCredentialsFormat } from '@foal/authentication';
 import { view } from '@foal/common';
 import { basic, HttpResponseRedirect, Module } from '@foal/core';
 
@@ -8,11 +8,11 @@ import { LoginViewService } from './login-view.service';
 export const AuthModule: Module = {
   controllers: [
     authentication
-      .attachService('/local', AuthenticatorService, {
+      .attachService('/email', AuthenticatorService, {
         failureRedirect: '/auth?invalid_credentials=true', // Optional
         successRedirect: '/whatever_you_like', // Optional
       })
-      .withPreHook(validateLocalCredentialsFormat()),
+      .withPreHook(validateEmailCredentialsFormat()),
     basic
       .attachHandlingFunction('POST', 'logout', ctx => {
         delete ctx.session.authentication;

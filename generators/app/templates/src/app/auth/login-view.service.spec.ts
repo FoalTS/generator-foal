@@ -12,7 +12,7 @@ const template1 =
   <title>Login</title>
 </head>
 <body>
-  <form action="/auth/local" method="post">
+  <form action="/auth/email" method="post">
     <input type="hidden" name="_csrf" value="foobar">
     <input type="email" name="email" required autofocus>
     <br>
@@ -32,7 +32,7 @@ const template2 =
   <title>Login</title>
 </head>
 <body>
-  <form action="/auth/local" method="post">
+  <form action="/auth/email" method="post">
     <strong>Invalid credentials.</strong>
     <input type="hidden" name="_csrf" value="foobar">
     <input type="email" name="email" required autofocus>
