@@ -25,11 +25,11 @@ describe('fooBar', () => {
   describe('when attachService is called', () => {
 
     it('should return a controller with a proper "main" route.', () => {
-      const controller = fooBar.attachService('/', MockService);
+      const controller = fooBar.attachService('/foobar', MockService);
       const actual = controller.getRoute('main');
 
       expect(actual.httpMethod).to.equal('GET');
-      expect(actual.path).to.equal('/');
+      expect(actual.path).to.equal('/foobar');
 
       const ctx = createEmptyContext();
       const result = actual.handler(ctx, new ServiceManager());

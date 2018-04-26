@@ -1,17 +1,18 @@
-import { Class, Controller, HttpReponseOK, ServiceControllerFactory } from '@foal/core';
+import { Class, Controller, HttpReponseOK, IServiceControllerFactory } from '@foal/core';
 
 import { I<%= CamelName %> } from './<%= kebabName %>.interface';
 
 export type RouteName = 'main';
 
-export class <%= CamelName %>Factory extends ServiceControllerFactory<I<%= CamelName %>, RouteName> {
+export class <%= CamelName %>Factory implements IServiceControllerFactory {
 
-  protected defineController(controller: Controller<RouteName>,
-                             ServiceClass: Class<I<%= CamelName %>>) {
-    controller.addRoute('main', 'GET', '/', (ctx, services) => {
+  public attachService(path: string, ServiceClass: Class<I<%= CamelName %>>): Controller<RouteName> {
+    const controller = new Controller<RouteName>(path);
+    controller.addRoute('main', 'GET', '', (ctx, services) => {
       console.log(services.get(ServiceClass));
       return new HttpReponseOK();
     });
+    return controller;
   }
 
 }

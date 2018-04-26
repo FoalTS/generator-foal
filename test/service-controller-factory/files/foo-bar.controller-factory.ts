@@ -1,17 +1,18 @@
-import { Class, Controller, HttpReponseOK, ServiceControllerFactory } from '@foal/core';
+import { Class, Controller, HttpReponseOK, IServiceControllerFactory } from '@foal/core';
 
 import { IFooBar } from './foo-bar.interface';
 
 export type RouteName = 'main';
 
-export class FooBarFactory extends ServiceControllerFactory<IFooBar, RouteName> {
+export class FooBarFactory implements IServiceControllerFactory {
 
-  protected defineController(controller: Controller<RouteName>,
-                             ServiceClass: Class<IFooBar>) {
-    controller.addRoute('main', 'GET', '/', (ctx, services) => {
+  public attachService(path: string, ServiceClass: Class<IFooBar>): Controller<RouteName> {
+    const controller = new Controller<RouteName>(path);
+    controller.addRoute('main', 'GET', '', (ctx, services) => {
       console.log(services.get(ServiceClass));
       return new HttpReponseOK();
     });
+    return controller;
   }
 
 }
