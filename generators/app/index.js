@@ -79,7 +79,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
             name: 'type',
             message: 'Which authenticator do you want to use?',
             choices: [
-              choice('Email authenticator', 'email-authenticator'),
+              choice('Email and password authenticator', 'email-and-password-authenticator'),
               // choice('I\'ll create one on my own.', 'authenticator')
             ],
             default: 0
@@ -152,7 +152,6 @@ Welcome to the FoalTS generator! The following questions will help you create yo
         'src/app/auth/index.ts',
         'src/app/auth/login-view.service.spec.ts',
         'src/app/auth/login-view.service.ts',
-        'src/app/shared/user.interface.ts',
         'src/app/shared/user.service.ts',
       );
     }
