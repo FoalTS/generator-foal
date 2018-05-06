@@ -35,7 +35,7 @@ function testWithName(name) {
   describe(`called with argument name=${name}`, () => {
 
     testWithType(name, 'empty');
-    testWithType(name, 'local-authenticator', false);
+    testWithType(name, 'email-and-password-authenticator', false);
     testWithType(name, 'ejs-template');
     testWithType(name, 'multiple-ejs-templates');
     testWithType(name, 'sequelize-model', false);

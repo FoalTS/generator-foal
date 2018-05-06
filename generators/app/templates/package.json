@@ -22,11 +22,11 @@
     "express-session": "^1.15.6",
     "helmet": "^3.9.0",
     "@types/node": "^8.0.47",
-    "@foal/ajv": "^0.4.0-beta.1",
-    "@foal/common": "^0.4.0-beta.2",
-    "@foal/core": "^0.4.0-beta.1",
-    "@foal/ejs": "^0.4.0-beta.2",
-    "@foal/express": "^0.4.0-beta.1",
+    "@foal/ajv": "^0.4.0-beta.3",
+    "@foal/common": "^0.4.0-beta.3",
+    "@foal/core": "^0.4.0-beta.3",
+    "@foal/ejs": "^0.4.0-beta.3",
+    "@foal/express": "^0.4.0-beta.3",
     "source-map-support": "^0.5.1"
   },
   "devDependencies": {

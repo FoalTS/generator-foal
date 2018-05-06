@@ -42,6 +42,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
           { name: 'None', value: null },
           { name: 'SQLite', value: 'sqlite' },
           { name: 'PostgreSQL', value: 'postgres' },
+          { name: 'Microsoft SQL Server', value: 'mssql' },
           // { name: 'MySQL', value: 'mysql' },
         ],
         default: 'sqlite'
@@ -79,7 +80,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
             name: 'type',
             message: 'Which authenticator do you want to use?',
             choices: [
-              choice('Local authenticator (with email and password)', 'local-authenticator'),
+              choice('Email and password authenticator', 'email-and-password-authenticator'),
               // choice('I\'ll create one on my own.', 'authenticator')
             ],
             default: 0
@@ -152,7 +153,6 @@ Welcome to the FoalTS generator! The following questions will help you create yo
         'src/app/auth/index.ts',
         'src/app/auth/login-view.service.spec.ts',
         'src/app/auth/login-view.service.ts',
-        'src/app/shared/user.interface.ts',
         'src/app/shared/user.service.ts',
       );
     }
@@ -182,17 +182,20 @@ Welcome to the FoalTS generator! The following questions will help you create yo
     let dbDependencies = [];
     switch(this.database) {
       case 'sqlite':
-        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'sqlite3');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.3', 'sqlite3');
         break;
       case 'postgres':
-        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'pg@6', 'pg-hstore');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.3', 'pg@6', 'pg-hstore');
+        break;
+      case 'mssql':
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.3', 'tedious');
         break;
       case 'mysql':
-        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'mysql2');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.3', 'mysql2');
         break;
     }
     if (this.authentication) {
-      dbDependencies.push('@foal/authentication@0.4.0-beta.2', 'bcrypt-nodejs');
+      dbDependencies.push('@foal/authentication@0.4.0-beta.3');
     }
     if (dbDependencies.length !== 0) {
       this.npmInstall(dbDependencies, {}, () => {}, { cwd: this.names.kebabName });

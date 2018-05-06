@@ -1,12 +1,10 @@
-import { ObjectType } from '@foal/core';
-
-export interface Config extends ObjectType {
+export interface Config {
   app: {
     name: string;
   };
   csrfProtection: boolean;
   db: {
-    options: ObjectType;
+    options: any;
     uri: string;
   };
   debugMode: boolean;
