@@ -42,6 +42,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
           { name: 'None', value: null },
           { name: 'SQLite', value: 'sqlite' },
           { name: 'PostgreSQL', value: 'postgres' },
+          { name: 'Microsoft SQL Server', value: 'mssql' },
           // { name: 'MySQL', value: 'mysql' },
         ],
         default: 'sqlite'
@@ -185,6 +186,9 @@ Welcome to the FoalTS generator! The following questions will help you create yo
         break;
       case 'postgres':
         dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'pg@6', 'pg-hstore');
+        break;
+      case 'mssql':
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'tedious');
         break;
       case 'mysql':
         dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'mysql2');
