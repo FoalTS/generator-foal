@@ -14,10 +14,7 @@ export const AuthModule: Module = {
       })
       .withPreHook(validateEmailCredentialsFormat()),
     basic
-      .attachHandlingFunction('POST', 'logout', ctx => {
-        delete ctx.session.authentication;
-        return new HttpResponseRedirect('/auth');
-      }),
+      .attachLogout('/logout', { redirect: '/auth' }),
     view
       .attachService('/', LoginViewService)
       .withPreHook(ctx => {
