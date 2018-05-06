@@ -182,20 +182,20 @@ Welcome to the FoalTS generator! The following questions will help you create yo
     let dbDependencies = [];
     switch(this.database) {
       case 'sqlite':
-        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'sqlite3');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.3', 'sqlite3');
         break;
       case 'postgres':
-        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'pg@6', 'pg-hstore');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.3', 'pg@6', 'pg-hstore');
         break;
       case 'mssql':
-        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'tedious');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.3', 'tedious');
         break;
       case 'mysql':
-        dbDependencies.push('@foal/sequelize@0.4.0-beta.2', 'mysql2');
+        dbDependencies.push('@foal/sequelize@0.4.0-beta.3', 'mysql2');
         break;
     }
     if (this.authentication) {
-      dbDependencies.push('@foal/authentication@0.4.0-beta.2', 'bcrypt-nodejs');
+      dbDependencies.push('@foal/authentication@0.4.0-beta.3');
     }
     if (dbDependencies.length !== 0) {
       this.npmInstall(dbDependencies, {}, () => {}, { cwd: this.names.kebabName });
