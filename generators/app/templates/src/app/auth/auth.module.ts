@@ -1,6 +1,6 @@
 import { authentication, validateEmailAndPasswordCredentialsFormat } from '@foal/authentication';
 import { view } from '@foal/common';
-import { basic, HttpResponseRedirect, Module } from '@foal/core';
+import { Module } from '@foal/core';
 
 import { AuthenticatorService } from './authenticator.service';
 import { LoginViewService } from './login-view.service';
@@ -13,7 +13,7 @@ export const AuthModule: Module = {
         successRedirect: '/whatever_you_like', // Optional
       })
       .withPreHook(validateEmailAndPasswordCredentialsFormat()),
-    basic
+    authentication
       .attachLogout('/logout', { redirect: '/auth' }),
     view
       .attachService('/', LoginViewService)
