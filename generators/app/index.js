@@ -195,7 +195,7 @@ Welcome to the FoalTS generator! The following questions will help you create yo
         break;
     }
     if (this.authentication) {
-      dbDependencies.push('@foal/authentication@0.4.0-beta.3');
+      dbDependencies.push('@foal/authentication@0.4.0-beta.4');
     }
     if (dbDependencies.length !== 0) {
       this.npmInstall(dbDependencies, {}, () => {}, { cwd: this.names.kebabName });
