@@ -1,12 +1,9 @@
-import { EmailAndPasswordAuthenticatorService } from '@foal/authentication';
 import { Service } from '@foal/core';
+import { AbstractEmailAuthenticator } from '@foal/password';
 
-import { User, UserService } from '../shared';
+import { User } from '../models';
 
 @Service()
-export class AuthenticatorService extends EmailAndPasswordAuthenticatorService<User> {
-  constructor(userService: UserService) {
-    super(userService);
-  }
-
+export class Authenticator extends AbstractEmailAuthenticator<User> {
+  UserEntity = User;
 }
