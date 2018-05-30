@@ -1,9 +1,9 @@
-import { FooBarService } from './foo-bar.service';
+import { FooBar } from './foo-bar.service';
 
-describe('FooBarService', () => {
+describe('FooBar', () => {
 
   it('should do something.', () => {
-    const service = new FooBarService();
+    const service = new FooBar();
   });
 
 });
