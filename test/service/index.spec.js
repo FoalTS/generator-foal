@@ -36,7 +36,7 @@ function testWithName(name) {
 
     testWithType(name, 'empty');
     testWithType(name, 'email-authenticator', false);
-    testWithType(name, 'sequelize-model', false);
+    testWithType(name, 'model', false);
     testWithType(name, 'authenticator');
   
   });
