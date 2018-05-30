@@ -36,8 +36,6 @@ function testWithName(name) {
 
     testWithType(name, 'empty');
     testWithType(name, 'email-and-password-authenticator', false);
-    testWithType(name, 'ejs-template');
-    testWithType(name, 'multiple-ejs-templates');
     testWithType(name, 'sequelize-model', false);
     testWithType(name, 'sequelize-connection');
     testWithType(name, 'authenticator');
