@@ -18,7 +18,8 @@
     "@types/node": "^8.0.47",
     "@foal/ajv": "^0.4.0-beta.3",
     "@foal/core": "^0.4.0-beta.3",
-    "source-map-support": "^0.5.1"
+    "source-map-support": "^0.5.1",
+    "typeorm": "^0.2.6"
   },
   "devDependencies": {
     "del": "^3.0.0",
