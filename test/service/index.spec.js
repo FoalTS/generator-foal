@@ -35,12 +35,11 @@ function testWithName(name) {
   describe(`called with argument name=${name}`, () => {
 
     testWithType(name, 'empty');
-    testWithType(name, 'email-and-password-authenticator', false);
+    testWithType(name, 'email-authenticator', false);
     testWithType(name, 'sequelize-model', false);
     testWithType(name, 'sequelize-connection');
     testWithType(name, 'authenticator');
     testWithType(name, 'view');
-    testWithType(name, 'multiple-views');
   
   });
 }
