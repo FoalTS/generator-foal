@@ -17,9 +17,6 @@ npm install -g generator-foal
 # Create an app
 yo foal my-app
 
-# Create a service controller factory
-yo foal:service-controller-factory my-controller-factory
-
 # Create a module
 yo foal:module my-module
 
