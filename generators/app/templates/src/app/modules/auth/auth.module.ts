@@ -9,7 +9,7 @@ export const AuthModule: Module = {
       successRedirect: '/whatever_you_like', // Optional
     }),
     logout('/logout', { redirect: '/auth' }),
-    route('/', 'GET', ctx => render({
+    route('/', 'GET', ctx => render(require('./templates/login.html'), {
       csrfToken: ctx.state.csrfToken,
       invalidCredentials: ctx.query.invalid_credentials
     }))
