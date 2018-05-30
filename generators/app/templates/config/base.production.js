@@ -1,17 +1,11 @@
-import { Config, toNumber } from './config';
-
-export const config: Config = {
+module.exports = {
   app: {
     name: '<%= kebabName %>'
   },
-  csrfProtection: true,
   db: {
     options: {},
     uri: process.env.DB_URI || 'my_uri',
   },
-  debugMode: false,
-  port: toNumber(process.env.PORT || '3000'),
-  public: '../public/',
   session: {
     cookie: {<% if (domain) { %>
       domain: '<%= domain %>',<% } %>
@@ -21,8 +15,6 @@ export const config: Config = {
       secure: false, // It should be true if you are using https.
     },
     name: 'sessionId',
-    resave: false,
-    saveUninitialized: false,
     secret: '<%= prodSecret1 %>'
       + '<%= prodSecret2 %>',
   },
