@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
+    "test": "",
+    "start": "node ./lib/server.js",
+    "start:w": "node-dev ./lib/server.js",
+    "build": "foal build --mode prod",
+    "build:dev": "foal build --mode dev",
+    "build:dev:w": "foal build --mode dev --watch",
+    "develop": "npm run build:dev && concurrently \"npm run build:dev:w\" \"npm run start:w\"",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "build": "gulp clean && gulp build",
-    "shell": "node -e \"const { app } = require('./dist/app/app')\" -i",
-    "test": "mocha -r source-map-support/register \"./dist/**/*.spec.js\"",
-    "start": "node server.js",
-    "dev:app": "gulp clean && gulp dev:app",
-    "dev:test": "tsc && concurrently -p \"[{name}]\" -n \"BUILD,SERVER\" -c \"bold\" \"tsc -w\" \"mocha -r source-map-support/register -w \"./dist/**/*.spec.js\"\""
   },
   "engines": {
     "node": ">=8"
@@ -22,11 +23,9 @@
     "typeorm": "^0.2.6"
   },
   "devDependencies": {
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "typescript": "^2.7.2",
-    "gulp-typescript": "^4.0.1",
-    "gulp-nodemon": "^2.2.1",
-    "gulp-sourcemaps": "^2.6.4"
+    "typescript": "^2.8.3",
+    "@foal/cli": "^0.4.0-beta.3",
+    "concurrently": "^3.5.1",
+    "node-dev": "^6.0.5"
   }
 }
