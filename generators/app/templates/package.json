@@ -24,9 +24,14 @@
     "typeorm": "^0.2.6"
   },
   "devDependencies": {
-    "typescript": "^2.8.3",
     "@foal/cli": "^0.4.0-beta.3",
+    "@types/chai": "",
+    "@types/mocha": "",
+    "chai": "",
     "concurrently": "^3.5.1",
-    "node-dev": "^6.0.5"
+    "mocha": "",
+    "node-dev": "^6.0.5",
+    "tslint": "",
+    "typescript": "^2.8.3"
   }
 }
