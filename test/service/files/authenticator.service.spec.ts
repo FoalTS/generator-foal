@@ -1,44 +1,26 @@
-import { IModelService, ObjectDoesNotExist } from '@foal/common';
-import { ObjectType } from '@foal/core';
+import { ObjectDoesNotExist } from '@foal/core';
 import { expect } from 'chai';
 
-import { FooBarService } from './foo-bar.service';
+import { FooBar } from './foo-bar.service';
 
-describe('FooBarService', () => {
+describe('FooBar', () => {
 
-  interface User {
-    // ...
-  }
-
-  class ConcreteClass extends FooBarService<User> {}
-  let service: ConcreteClass;
-
-  class UserModelService implements IModelService<User, ObjectType, ObjectType, any> {
-    public createOne(): any {}
-    public createMany(): any {}
-
-    public findById(): any {}
-    public findOne(query: ObjectType): User & { id: any } {
-      // ...
-      throw new ObjectDoesNotExist();
-    }
-    public findAll(): any {}
-
-    public findByIdAndUpdate(): any {}
-    public findOneAndUpdate(): any {}
-    public updateMany(): void {}
-
-    public findByIdAndReplace(): any {}
-    public findOneAndReplace(): any {}
-
-    public findByIdAndRemove(): any {}
-    public findOneAndRemove(): any {}
-
-    public removeMany(): void {}
-  }
+  let service: FooBar;
 
   it('should instantiate.', () => {
-    service = new ConcreteClass(new UserModelService());
+    service = new FooBar();
+  });
+
+  describe('when validate is called', () => {
+
+    it('should throw a ValidationError if the credential format is incorrect.', () => {
+
+    });
+
+    it('should return the credentials if their format is correct.', () => {
+
+    });
+
   });
 
   describe('when authenticate is called', () => {
