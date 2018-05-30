@@ -32,7 +32,6 @@ module.exports = class extends Generator {
           choice('[Model] Sequelize model (PostgreSQL, SQLite, MS SQL)', 'sequelize-model'),
           choice('Authenticator (to implement)', 'authenticator'),
           // choice('Model (to implement)', 'model'),
-          choice('View (to implement)', 'view'),
         ],
         default: 0
       }
