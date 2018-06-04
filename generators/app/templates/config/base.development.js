@@ -4,7 +4,7 @@ module.exports = {
   },
   csrf: false,
   database: {
-    type: '<%= type %>',
+    type: '',
     host: '',
     database: '',
     username: '',
