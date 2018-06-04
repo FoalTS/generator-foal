@@ -1,8 +1,8 @@
 import { ModelService, Service } from '@foal/core';
 
-import { MyEntityClass } from 'somewhere';
+import { MyModel } from 'somewhere';
 
 @Service()
-export class <%= CamelName %> extends ModelService<MyEntityClass> {
-  Entity = MyEntityClass;
+export class <%= CamelName %> extends ModelService<MyModel> {
+  Model = MyModel;
 }

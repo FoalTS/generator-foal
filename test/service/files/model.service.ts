@@ -1,8 +1,8 @@
 import { ModelService, Service } from '@foal/core';
 
-import { MyEntityClass } from 'somewhere';
+import { MyModel } from 'somewhere';
 
 @Service()
-export class FooBar extends ModelService<MyEntityClass> {
-  Entity = MyEntityClass;
+export class FooBar extends ModelService<MyModel> {
+  Model = MyModel;
 }
