@@ -7,8 +7,8 @@ module.exports = {
     uri: process.env.DB_URI || 'my_uri',
   },
   session: {
-    cookie: {<% if (domain) { %>
-      domain: '<%= domain %>',<% } %>
+    cookie: {
+      domain: 'localhost',
       httpOnly: true,
       maxAge: 60 * 60 * 1000, // 1 hour
       path: '/',
