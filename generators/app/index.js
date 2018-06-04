@@ -44,7 +44,7 @@ module.exports = class extends Generator {
     }
     const paths = [
       'config/base.development.js',
-      'config/base.base.js',
+      'config/base.js',
       'config/base.production.js',
       'config/base.test.js',
 
