@@ -10,7 +10,7 @@
     "build:dev": "foal build --mode dev",
     "build:dev:w": "foal build --mode dev --watch",
     "develop": "npm run build:dev && concurrently \"npm run build:dev:w\" \"npm run start:w\"",
-    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "lint": "tslint -c tslint.json -p tsconfig.json"
   },
   "engines": {
     "node": ">=8"
