@@ -56,7 +56,6 @@ module.exports = class extends Generator {
       'src/app/templates/index.html',
       'src/app/templates/index.ts',
       'src/app/app.module.ts',
-      'src/app/index.ts',
 
       'src/index.ts',
 
