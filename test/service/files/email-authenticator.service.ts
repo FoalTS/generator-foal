@@ -4,5 +4,5 @@ import { User } from 'somewhere';
 
 @Service()
 export class FooBar extends AbstractEmailAuthenticator<User> {
-  UserClass = User;
+  UserModel = User;
 }
