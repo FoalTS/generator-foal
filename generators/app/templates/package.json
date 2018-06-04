@@ -5,7 +5,7 @@
   "scripts": {
     "test": "",
     "start": "node ./lib/server.js",
-    "start:w": "node-dev ./lib/server.js",
+    "start:w": "supervisor ./lib/server.js",
     "build": "foal build --mode prod",
     "build:dev": "foal build --mode dev",
     "build:dev:w": "foal build --mode dev --watch",
@@ -31,7 +31,7 @@
     "chai": "^4.1.2",
     "concurrently": "^3.5.1",
     "mocha": "^5.2.0",
-    "node-dev": "^6.0.5",
+    "supervisor": "^0.12.0",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
   }
