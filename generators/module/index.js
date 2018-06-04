@@ -18,15 +18,22 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(
-      this.templatePath('index.ts'),
-      this.destinationPath(`${this.names.kebabName}/index.ts`),
-      this.names
-    );
-    this.fs.copyTpl(
-      this.templatePath('module.ts'),
-      this.destinationPath(`${this.names.kebabName}/${this.names.kebabName}.module.ts`),
-      this.names
-    );
+    const files = [
+      { source: 'index.ts', target: `${this.names.kebabName}/index.ts` },
+      { source: 'module.ts', target: `${this.names.kebabName}/${this.names.kebabName}.module.ts` },
+      { source: 'handlers/index.ts', target: `${this.names.kebabName}/handlers/index.ts` },
+      { source: 'hooks/index.ts', target: `${this.names.kebabName}/hooks/index.ts` },
+      { source: 'models/index.ts', target: `${this.names.kebabName}/models/index.ts` },
+      { source: 'modules/index.ts', target: `${this.names.kebabName}/modules/index.ts` },
+      { source: 'services/index.ts', target: `${this.names.kebabName}/services/index.ts` },
+      { source: 'templates/index.ts', target: `${this.names.kebabName}/templates/index.ts` },
+    ]
+    files.forEach(file => {
+      this.fs.copyTpl(
+        this.templatePath(file.source),
+        this.destinationPath(file.target),
+        this.names
+      );
+    });
   }
 };
