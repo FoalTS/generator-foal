@@ -35,12 +35,7 @@ module.exports = class extends Generator {
       ...this.names,
       csrfToken: '<%= csrfToken %>',
       appName: '<%= appName %>',
-      devSecret1: crypto.randomBytes(32).toString('hex'),
-      prodSecret1: crypto.randomBytes(32).toString('hex'),
-      testSecret1: crypto.randomBytes(32).toString('hex'),
-      devSecret2: crypto.randomBytes(32).toString('hex'),
-      prodSecret2: crypto.randomBytes(32).toString('hex'),
-      testSecret2: crypto.randomBytes(32).toString('hex'),
+      sessionSecret: crypto.randomBytes(16).toString('hex'),
     }
     const paths = [
       'config/base.development.js',

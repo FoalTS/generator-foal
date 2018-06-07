@@ -2,15 +2,16 @@ import 'source-map-support/register';
 
 import * as http from 'http';
 
-import { createApp, getConfig } from '@foal/core';
+import { Config, createApp } from '@foal/core';
 
 import { AppModule } from './app/app.module';
 
 const app = createApp(AppModule);
 
 const httpServer = http.createServer(app);
-httpServer.listen(getConfig('base').port || 3000, () => {
-  console.log(`Listening on port ${getConfig('base').port || 3000}...`);
+const port = Config.get('settings', 'port', 3000);
+httpServer.listen(port, () => {
+  console.log(`Listening on port ${port}...`);
 });
 
 // module.exports.handler = serverless(app);
