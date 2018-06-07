@@ -13,7 +13,7 @@
     "build:test": "foal build --mode=test",
     "build:test:w": "foal build --mode=test --watch",
     "develop": "npm run build:dev && concurrently \"npm run build:dev:w\" \"npm run start:w\"",
-    "develop:test": "npm run build:test && concurrently \"npm run build:test:w\" \"npm run test:w\""
+    "develop:test": "npm run build:test && concurrently \"npm run build:test:w\" \"npm run test:w\"",
     "lint": "tslint -c tslint.json -p tsconfig.json"
   },
   "engines": {
@@ -28,13 +28,13 @@
     "typeorm": "^0.2.6"
   },
   "devDependencies": {
-    "@foal/cli": "^0.4.0-beta.3",
-    "@types/chai": "^4.1.3",
-    "@types/mocha": "^5.2.1",
     "@types/node": "^8.0.47",
+    "@foal/cli": "^0.4.0-beta.3",
     "chai": "^4.1.2",
-    "concurrently": "^3.5.1",
+    "@types/chai": "^4.1.3",
     "mocha": "^5.2.0",
+    "@types/mocha": "^5.2.1",
+    "concurrently": "^3.5.1",
     "supervisor": "^0.12.0",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
