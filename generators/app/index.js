@@ -54,6 +54,7 @@ module.exports = class extends Generator {
 
       'src/index.ts',
 
+      'ormconfig.json',
       'package.json',
       'tsconfig.json',
       'tslint.json',
