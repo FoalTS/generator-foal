@@ -46,15 +46,23 @@ module.exports = class extends Generator {
       'config/settings.production.json',
 
       'src/app/handlers/index.ts',
+      'src/app/handlers/test.ts',
       'src/app/hooks/index.ts',
+      'src/app/hooks/test.ts',
       'src/app/models/index.ts',
+      'src/app/models/test.ts',
       'src/app/modules/index.ts',
+      'src/app/modules/test.ts',
       'src/app/services/index.ts',
+      'src/app/services/test.ts',
       'src/app/templates/index.html',
       'src/app/templates/index.ts',
+      'src/app/templates/test.ts',
       'src/app/app.module.ts',
+      'src/app/test.ts',
 
       'src/index.ts',
+      'src/test.ts',
 
       'ormconfig.json',
       'package.json',
