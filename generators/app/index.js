@@ -38,10 +38,12 @@ module.exports = class extends Generator {
       sessionSecret: crypto.randomBytes(16).toString('hex'),
     }
     const paths = [
-      'config/base.development.js',
-      'config/base.js',
-      'config/base.production.js',
-      'config/base.test.js',
+      'config/app.development.json',
+      'config/app.production.json',
+      'config/app.test.json',
+      'config/settings.development.json',
+      'config/settings.json',
+      'config/settings.production.json',
 
       'src/app/handlers/index.ts',
       'src/app/hooks/index.ts',
