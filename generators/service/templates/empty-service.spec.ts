@@ -1,9 +1,9 @@
-import { <%= CamelName %>Service } from './<%= kebabName %>.service';
+import { <%= CamelName %> } from './<%= kebabName %>.service';
 
-describe('<%= CamelName %>Service', () => {
+describe('<%= CamelName %>', () => {
 
   it('should do something.', () => {
-    const service = new <%= CamelName %>Service();
+    const service = new <%= CamelName %>();
   });
 
 });

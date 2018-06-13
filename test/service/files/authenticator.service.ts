@@ -1,13 +1,15 @@
-import { IAuthenticator } from '@foal/authentication';
-import { Service } from '@foal/core';
+import { IAuthenticator, Service } from '@foal/core';
 
 import { User } from 'somewhere';
 
 @Service()
-export class FooBarService implements IAuthenticator<User> {
-  constructor() {}
+export class FooBar implements IAuthenticator<User> {
 
-  public authenticate(credentials): User | null | Promise<User | null> {
+  validate(credentials) {
+    return credentials;
+  }
+
+  authenticate(credentials): User | null | Promise<User | null> {
     return null;
   }
 

@@ -20,7 +20,44 @@ function testWithName(name) {
   
     it('should generate an "foo-bar/index.ts" file which exports the module.', async () => {
       assert.file(['foo-bar/index.ts']);
-      assert.fileContent('foo-bar/index.ts', 'export { FooBarModule } from \'./foo-bar.module\';\n')
+      const fileContent = await readFile(__dirname, './files/index.ts');
+      assert.fileContent('foo-bar/index.ts', fileContent);
+    });
+  
+    it('should generate an "foo-bar/handlers/index.ts" file which exports the module.', async () => {
+      assert.file(['foo-bar/handlers/index.ts']);
+      const fileContent = await readFile(__dirname, './files/handlers/index.ts');
+      assert.fileContent('foo-bar/handlers/index.ts', fileContent);
+    });
+  
+    it('should generate an "foo-bar/hooks/index.ts" file which exports the module.', async () => {
+      assert.file(['foo-bar/hooks/index.ts']);
+      const fileContent = await readFile(__dirname, './files/hooks/index.ts');
+      assert.fileContent('foo-bar/hooks/index.ts', fileContent);
+    });
+  
+    it('should generate an "foo-bar/models/index.ts" file which exports the module.', async () => {
+      assert.file(['foo-bar/models/index.ts']);
+      const fileContent = await readFile(__dirname, './files/models/index.ts');
+      assert.fileContent('foo-bar/models/index.ts', fileContent);
+    });
+  
+    it('should generate an "foo-bar/modules/index.ts" file which exports the module.', async () => {
+      assert.file(['foo-bar/modules/index.ts']);
+      const fileContent = await readFile(__dirname, './files/modules/index.ts');
+      assert.fileContent('foo-bar/modules/index.ts', fileContent);
+    });
+  
+    it('should generate an "foo-bar/services/index.ts" file which exports the module.', async () => {
+      assert.file(['foo-bar/services/index.ts']);
+      const fileContent = await readFile(__dirname, './files/services/index.ts');
+      assert.fileContent('foo-bar/services/index.ts', fileContent);
+    });
+  
+    it('should generate an "foo-bar/templates/index.ts" file which exports the module.', async () => {
+      assert.file(['foo-bar/templates/index.ts']);
+      const fileContent = await readFile(__dirname, './files/templates/index.ts');
+      assert.fileContent('foo-bar/templates/index.ts', fileContent);
     });
   
   });
