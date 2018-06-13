@@ -9,7 +9,8 @@ install:
 script:
   - npm run test
   - yo foal my-test-app
-  - cd my-test-app && npm run lint
-  - cd my-test-app && npm run build
-  - cd my-test-app && npm run build:test
-  - cd my-test-app && npm run test
+  - cd my-test-app 
+  - npm run lint
+  - npm run build
+  - npm run build:test
+  - npm run test
