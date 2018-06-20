@@ -4,6 +4,9 @@ import { index } from './templates';
 
 export const AppModule: Module = {
   controllers: [
-    view('/', index, { appName: Config.get('app', 'name') } )
+    view('/', index, ctx => ({
+      appName: Config.get('app', 'name'),
+      csrfToken: ctx.state.csrfToken,
+    }))
   ],
 };
