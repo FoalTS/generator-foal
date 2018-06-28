@@ -9,13 +9,15 @@ Yeoman generators to quickly start a foal project and create components (service
 ## Get started
 
 ```sh
-npm install -g yo
-npm install -g generator-foal
+npm install -g yo generator-foal
 ```
 
 ```sh
 # Create an app
 yo foal my-app
+
+# Create a model
+yo foal:model my-model
 
 # Create a module
 yo foal:module my-module
