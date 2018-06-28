@@ -1,5 +1,16 @@
 language: node_js
 node_js:
   - "8"
+before_install:
+  - npm install -g yo
+install:
+  - npm install
+  - npm link
 script:
+  - npm run test
+  - yo foal my-test-app
+  - cd my-test-app 
+  - npm run lint
+  - npm run build
+  - npm run build:test
   - npm run test

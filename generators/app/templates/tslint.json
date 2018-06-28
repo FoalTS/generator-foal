@@ -17,6 +17,7 @@
     "no-empty-interface": false,
     "no-unused-variable": true,
     "no-duplicate-imports": true,
+    "no-var-requires": false,
     "member-access": [true, "no-public"]
   },
   "rulesDirectory": []
